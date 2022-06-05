@@ -1,8 +1,12 @@
 package handlers
 
 import (
+	"encoding/json"
+	"io"
+	"io/ioutil"
 	"net/http"
 
+	mqttcloudconfig "cg-edge-configurator/apps/mqtt-cloud-connector/config"
 	"cg-edge-configurator/configurator"
 
 	"github.com/gin-gonic/gin"
@@ -17,13 +21,12 @@ func GetConfigHandler(c *gin.Context) {
 // AddTodoHandler adds a new todo to the todo list
 func SetConfigHandler(c *gin.Context) {
 	appName := c.Param("appName")
-	//configFile, statusCode, err := convertHTTPBodyToTodo(c.Request.Body)
-	//if err != nil {
-	//	c.JSON(statusCode, err)
-	//	return
-	//}
-	//c.JSON(statusCode, config.Set(appName))
-	c.JSON(0, configurator.Set(appName))
+	configFile, statusCode, err := convertHTTPBodyToTodo(c.Request.Body)
+	if err != nil {
+		c.JSON(statusCode, err)
+		return
+	}
+	c.JSON(statusCode, configurator.Set(appName, configFile))
 }
 
 func DeleteConfigHandler(c *gin.Context) {
@@ -34,20 +37,20 @@ func PutConfigHandler(c *gin.Context) {
 
 }
 
-//func convertHTTPBodyToTodo(httpBody io.ReadCloser) (dbdriver.Todo, int, error) {
-//	body, err := ioutil.ReadAll(httpBody)
-//	if err != nil {
-//		return dbdriver.Todo{}, http.StatusInternalServerError, err
-//	}
-//	defer httpBody.Close()
-//	return convertJSONBodyToTodo(body)
-//}
+func convertHTTPBodyToTodo(httpBody io.ReadCloser) (mqttcloudconfig.Config, int, error) {
+	body, err := ioutil.ReadAll(httpBody)
+	if err != nil {
+		return mqttcloudconfig.Config{}, http.StatusInternalServerError, err
+	}
+	defer httpBody.Close()
+	return convertJSONBodyToTodo(body)
+}
 
-//func convertJSONBodyToTodo(jsonBody []byte) (dbdriver.Todo, int, error) {
-//	var todoItem dbdriver.Todo
-//	err := json.Unmarshal(jsonBody, &todoItem)
-//	if err != nil {
-//		return dbdriver.Todo{}, http.StatusBadRequest, err
-//	}
-//	return todoItem, http.StatusOK, nil
-//}
+func convertJSONBodyToTodo(jsonBody []byte) (mqttcloudconfig.Config, int, error) {
+	var Config mqttcloudconfig.Config
+	err := json.Unmarshal(jsonBody, &Config)
+	if err != nil {
+		return mqttcloudconfig.Config{}, http.StatusBadRequest, err
+	}
+	return Config, http.StatusOK, nil
+}
