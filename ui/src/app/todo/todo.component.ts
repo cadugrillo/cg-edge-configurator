@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService, Todo } from '../todo.service';
-import { CognitoService } from '../cognito.service';
+
 
 @Component({
   selector: 'app-todo',
@@ -15,14 +15,10 @@ export class TodoComponent implements OnInit {
   userId!: string;
 
   constructor(private todoService: TodoService,
-              private cognitoService: CognitoService) { }
+                                                ) { }
 
   ngOnInit() {
-    this.cognitoService.getUserId().then((userId: string) => {
-      this.userId = userId;
-      this.userId = this.userId.replace(/-/g,"");
-      this.getAll();
-    });
+    this.getAll();
   }
 
   getAll() {
