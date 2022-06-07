@@ -186,7 +186,7 @@
         <i class="fa fa-minus"></i>
       </button>
       <div class name="TopicsSub"topics *ngFor="let Topic of mccConfig?.TopicsSub?.Topic; let i = index; trackBy:trackByFn">
-        <input placeholder="" [ngModel]="mccConfig.TopicsSub.Topic[i]">
+        <input placeholder="" [(ngModel)]="mccConfig.TopicsSub.Topic[i]">
       </div>  
     </div>
     <div class="input" >
@@ -198,7 +198,7 @@
         <i class="fa fa-minus"></i>
       </button>
       <div class name="TopicsPub" topics *ngFor="let Topic of mccConfig?.TopicsPub?.Topic; let i = index; trackBy:trackByFn">
-        <input placeholder="" [ngModel]="mccConfig.TopicsPub.Topic[i]">
+        <input placeholder="" [(ngModel)]="mccConfig.TopicsPub.Topic[i]">
       </div>  
     </div>
 </div> 

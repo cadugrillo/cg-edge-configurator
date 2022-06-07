@@ -1,36 +1,29 @@
-version: "3.7"
+version: "3.8"
 
 services:
-  angular:
-    image: cadugrillo/angular-app1:1.3
-    container_name: angular
+  cg-edge-conf-api:
+    image: cadugrillo/cg-edge-conf-api:1.0
+    container_name: cg-edge-conf-api
+    restart: always
+    volumes:
+      - type: bind
+        source: /home/edge/apps
+        target: /apps
+    networks:
+      - cg-edge-conf
+
+  cg-edge-conf:
+    image: cadugrillo/cg-edge-conf:1.0
+    container_name: cg-edge-conf
     restart: always
     ports:
       - 80:80
+    networks:
+      - cg-edge-conf
 
-  golang:
-    image: cadugrillo/golang-app1:1.4
-    container_name: golang
-    restart: always
-    environment:
-      - DBDRIVER=mysql
-      - DBIPADDRESS=mysql
-      - DBPORT=3306
-      - DBUSER=root
-      - DBPASSWORD=root
-
-  mysql:
-    image: mysql:latest
-    container_name: mysql
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=todo
-    volumes:
-      - mysql-data:/var/lib/mysql
-
-volumes:
-  mysql-data:
+networks:
+   cg-edge-conf:
+    external: true
   
    
 

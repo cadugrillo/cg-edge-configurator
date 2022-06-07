@@ -5,10 +5,6 @@
 export const environment = {
   production: false,
   gateway: 'http://localhost:4300',
-  cognito: {
-    userPoolId: 'us-east-1_wXNyjVJP4',
-    userPoolWebClientId: '3bjl2vgb74537vk0b6r33r7jp4',
-  },
 };
 
 /*

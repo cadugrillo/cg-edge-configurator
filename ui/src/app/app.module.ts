@@ -6,8 +6,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { TodoComponent } from './todo/todo.component';
-import { TodoService } from './todo.service';
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './token.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +16,6 @@ import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-c
   declarations: [
     AppComponent,
     HomeComponent,
-    TodoComponent,
     MqttCloudConnectorComponent,
   ],
   imports: [
@@ -28,7 +25,7 @@ import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-c
     HttpClientModule,
     NgbModule
   ],
-  providers: [TodoService, CgEdgeConfigService,{
+  providers: [CgEdgeConfigService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

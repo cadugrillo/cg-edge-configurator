@@ -10,19 +10,19 @@ func init() {
 
 }
 
-func Get(appName string) any {
+func Get(appName string) mqttcloudconfig.Config {
 	switch appName {
 	case "mqtt-cloud-connector":
 		return mqttcloudconfig.ReadConfig()
 
 	}
-	return nil
+	return mqttcloudconfig.Config{}
 }
 
-func Set(appName string, ConfigFile any) string {
+func Set(appName string, ConfigFile mqttcloudconfig.Config) string {
 	switch appName {
 	case "mqtt-cloud-connector":
-		err1 := mqttcloudconfig.WriteConfig((ConfigFile).(mqttcloudconfig.Config))
+		err1 := mqttcloudconfig.WriteConfig(ConfigFile)
 		if err1 != nil {
 			panic(err1)
 		}
