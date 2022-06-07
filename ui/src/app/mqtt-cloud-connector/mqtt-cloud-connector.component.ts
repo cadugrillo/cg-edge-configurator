@@ -43,6 +43,15 @@ export class MqttCloudConnectorComponent implements OnInit {
     this.mccConfig.TopicsSub.Topic.splice(-1)
   }
 
+  addPubTopic() {
+    this.newTopic = "newtopic/sample"
+    this.mccConfig.TopicsPub.Topic.push(this.newTopic)
+  }
+
+  deletePubTopic() {
+    this.mccConfig.TopicsPub.Topic.splice(-1)
+  }
+
   trackByFn(index: any, item: any) {
     return index;
  }

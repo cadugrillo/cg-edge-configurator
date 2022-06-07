@@ -10,7 +10,7 @@ const routes: Routes = [
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
-  { path: 'todo', component: MqttCloudConnectorComponent},
+  { path: 'mcc-config', component: MqttCloudConnectorComponent},
   { path: '**', redirectTo: 'home'},
  
 
