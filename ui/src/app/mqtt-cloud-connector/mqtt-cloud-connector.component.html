@@ -8,82 +8,82 @@
     <h3>Client Subscriber</h3>
     <div class="input">
       <label for="ClientSub.ClientId">Client ID:</label><br>
-      <input name="ClientSub.ClientId" placeholder="" [(ngModel)]="mccConfig.ClientSub.ClientId" *ngIf="mccConfig?.ClientSub?.ClientId">
+      <input name="ClientSub.ClientId" placeholder="" [(ngModel)]="mccConfig.ClientSub.ClientId">
     </div>
     <div class="input">
       <label for="ClientSub.ServerAddress">Server Address:</label><br>
-      <input name="ClientSub.ServerAddress" placeholder="" [(ngModel)]="mccConfig.ClientSub.ServerAddress" *ngIf="mccConfig?.ClientSub?.ServerAddress">
+      <input name="ClientSub.ServerAddress" placeholder="" [(ngModel)]="mccConfig.ClientSub.ServerAddress">
     </div>
     <div class="input">
       <label for="ClientSub.Qos">Quality of Service:</label><br>
-      <input name="ClientSub.Qos" placeholder="" [(ngModel)]="mccConfig.ClientSub.Qos" *ngIf="mccConfig?.ClientSub?.Qos">
+      <input type="number" name="ClientSub.Qos" placeholder="" [(ngModel)]="mccConfig.ClientSub.Qos">
     </div>
     <div class="input">
       <label for="ClientSub.ConnectionTimeout">Connection Timeout (s):</label><br>
-      <input name="ClientSub.ConnectionTimeout" placeholder="" [(ngModel)]="mccConfig.ClientSub.ConnectionTimeout" *ngIf="mccConfig?.ClientSub?.ConnectionTimeout">
+      <input name="ClientSub.ConnectionTimeout" placeholder="" [ngModel]="mccConfig?.ClientSub?.ConnectionTimeout">
     </div>
     <div class="input">
       <label for="ClientSub.WriteTimeout">Write Timeout (s):</label><br>
-      <input name="ClientSub.WriteTimeout" placeholder="" [(ngModel)]="mccConfig.ClientSub.WriteTimeout" *ngIf="mccConfig?.ClientSub?.WriteTimeout">
+      <input name="ClientSub.WriteTimeout" placeholder="" [ngModel]="mccConfig?.ClientSub?.WriteTimeout">
     </div>
     <div class="input">
       <label for="ClientSub.KeepAlive">Keep Alive (s):</label><br>
-      <input name="ClientSub.KeepAlive" placeholder="" [(ngModel)]="mccConfig.ClientSub.KeepAlive" *ngIf="mccConfig?.ClientSub?.KeepAlive">
+      <input name="ClientSub.KeepAlive" placeholder="" [ngModel]="mccConfig?.ClientSub?.KeepAlive">
     </div>
     <div class="input">
       <label for="ClientSub.PingTimeout">Ping Timeout (s):</label><br>
-      <input name="ClientSub.PingTimeout" placeholder="" [(ngModel)]="mccConfig.ClientSub.PingTimeout" *ngIf="mccConfig?.ClientSub?.PingTimeout">
+      <input name="ClientSub.PingTimeout" placeholder="" [ngModel]="mccConfig?.ClientSub?.PingTimeout">
     </div>
     <div class="input">
       <label for="ClientSub.ConnectRetry">Connection Retry:</label><br>
-      <input name="ClientSub.ConnectRetry" placeholder="" [(ngModel)]="mccConfig.ClientSub.ConnectRetry" *ngIf="mccConfig?.ClientSub?.ConnectRetry">
+      <input name="ClientSub.ConnectRetry" placeholder="" [ngModel]="mccConfig?.ClientSub?.ConnectRetry">
     </div>
     <div class="input">
       <label for="ClientSub.AutoConnect">Auto Connect:</label><br>
-      <input name="ClientSub.AutoConnect" placeholder="" [(ngModel)]="mccConfig.ClientSub.AutoConnect" *ngIf="mccConfig?.ClientSub?.AutoConnect">
+      <input name="ClientSub.AutoConnect" placeholder="" [ngModel]="mccConfig?.ClientSub?.AutoConnect">
     </div>
     <div class="input">
       <label for="ClientSub.OrderMaters">Order Maters:</label><br>
-      <input name="ClientSub.OrderMaters" placeholder="" [(ngModel)]="mccConfig.ClientSub.OrderMaters" *ngIf="mccConfig?.ClientSub?.AutoConnect">
+      <input name="ClientSub.OrderMaters" placeholder="" [(ngModel)]="mccConfig.ClientSub.OrderMaters">
     </div>
     <div class="input">
       <label for="ClientSub.UserName">User Name:</label><br>
-      <input name="ClientSub.UserName" placeholder="" [(ngModel)]="mccConfig.ClientSub.UserName" *ngIf="mccConfig?.ClientSub?.UserName">
+      <input name="ClientSub.UserName" placeholder="" [ngModel]="mccConfig?.ClientSub?.UserName">
     </div>
     <div class="input">
       <label for="ClientSub.Password">Password:</label><br>
-      <input name="ClientSub.Password" placeholder="" [(ngModel)]="mccConfig.ClientSub.Password" *ngIf="mccConfig?.ClientSub?.Password">
+      <input name="ClientSub.Password" placeholder="" [ngModel]="mccConfig?.ClientSub?.Password">
     </div>
     <div class="input">
       <label for="ClientSub.TlsConn">TLS Connection:</label><br>
-      <input name="ClientSub.TlsConn" placeholder="" [(ngModel)]="mccConfig.ClientSub.TlsConn" *ngIf="mccConfig?.ClientSub?.AutoConnect">
+      <input name="ClientSub.TlsConn" placeholder="" [ngModel]="mccConfig?.ClientSub?.TlsConn">
     </div>
     <div class="input">
       <label for="ClientSub.RootCAPath">Root CA path:</label><br>
-      <input name="ClientSub.RootCAPath" placeholder="" [(ngModel)]="mccConfig.ClientSub.RootCAPath" *ngIf="mccConfig?.ClientSub?.RootCAPath">
+      <input name="ClientSub.RootCAPath" placeholder="" [ngModel]="mccConfig?.ClientSub?.RootCAPath">
     </div>
     <div class="input">
       <label for="ClientSub.ClientKeyPath">Client Key Path:</label><br>
-      <input name="ClientSub.ClientKeyPath" placeholder="" [(ngModel)]="mccConfig.ClientSub.ClientKeyPath" *ngIf="mccConfig?.ClientSub?.ClientKeyPath">
+      <input name="ClientSub.ClientKeyPath" placeholder="" [ngModel]="mccConfig?.ClientSub?.ClientKeyPath">
     </div>
     <div class="input">
       <label for="ClientSub.PrivateKeyPath">Private Key Path:</label><br>
-      <input name="ClientSub.PrivateKeyPath" placeholder="" [(ngModel)]="mccConfig.ClientSub.PrivateKeyPath" *ngIf="mccConfig?.ClientSub?.PrivateKeyPath">
+      <input name="ClientSub.PrivateKeyPath" placeholder="" [ngModel]="mccConfig?.ClientSub?.PrivateKeyPath">
     </div>
     <div class="input">
       <label for="ClientSub.InsecureSkipVerify">Insecure Skip Verify:</label><br>
-      <input name="ClientSub.InsecureSkipVerify" placeholder="" [(ngModel)]="mccConfig.ClientSub.InsecureSkipVerify" *ngIf="mccConfig?.ClientSub?.InsecureSkipVerify">
+      <input name="ClientSub.InsecureSkipVerify" placeholder="" [ngModel]="mccConfig?.ClientSub?.InsecureSkipVerify">
     </div>
     <div class="input" >
       <label for="TopicsSub">Topics to Subscribe to:</label>
-      <button class="btn btn-secondary" (click)="addTopic()">
+      <button class="btn btn-secondary" (click)="addSubTopic()">
         <i class="fa fa-plus"></i>
       </button>
-      <button class="btn btn-secondary" (click)="deleteTopic()">
+      <button class="btn btn-secondary" (click)="deleteSubTopic()">
         <i class="fa fa-minus"></i>
       </button>
-      <div class name="TopicsSub"topics *ngFor="let Topic of mccConfig?.TopicsSub?.Topic; let i = index">
-        <input placeholder="" [(ngModel)]="mccConfig.TopicsSub.Topic[i]">
+      <div class name="TopicsSub"topics *ngFor="let Topic of mccConfig?.TopicsSub?.Topic; let i = index; trackBy:trackByFn">
+        <input placeholder="" [ngModel]="mccConfig.TopicsSub.Topic[i]">
       </div>  
     </div>
   </div>
@@ -91,93 +91,93 @@
     <h3>Client Publisher</h3>
     <div class="input">
       <label for="ClientPub.ClientId">Client ID:</label><br>
-      <input name="ClientPub.ClientId" placeholder="" [(ngModel)]="mccConfig.ClientPub.ClientId" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.ClientId" placeholder="" [ngModel]="mccConfig?.ClientPub?.ClientId">
     </div>
     <div class="input">
       <label for="ClientPub.ServerAddress">Server Address:</label><br>
-      <input name="ClientPub.ServerAddress" placeholder="" [(ngModel)]="mccConfig.ClientPub.ServerAddress" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.ServerAddress" placeholder="" [ngModel]="mccConfig?.ClientPub?.ServerAddress">
     </div>
     <div class="input">
       <label for="ClientPub.Qos">Quality of Service:</label><br>
-      <input name="ClientPub.Qos" placeholder="" [(ngModel)]="mccConfig.ClientPub.Qos" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.Qos" placeholder="" [ngModel]="mccConfig?.ClientPub?.Qos">
     </div>
     <div class="input">
       <label for="ClientPub.ConnectionTimeout">Connection Timeout (s):</label><br>
-      <input name="ClientPub.ConnectionTimeout" placeholder="" [(ngModel)]="mccConfig.ClientPub.ConnectionTimeout" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.ConnectionTimeout" placeholder="" [ngModel]="mccConfig?.ClientPub?.ConnectionTimeout">
     </div>
     <div class="input">
       <label for="ClientPub.WriteTimeout">Write Timeout (s):</label><br>
-      <input name="ClientPub.WriteTimeout" placeholder="" [(ngModel)]="mccConfig.ClientPub.WriteTimeout" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.WriteTimeout" placeholder="" [ngModel]="mccConfig?.ClientPub?.WriteTimeout">
     </div>
     <div class="input">
       <label for="ClientPub.KeepAlive">Keep Alive (s):</label><br>
-      <input name="ClientPub.KeepAlive" placeholder="" [(ngModel)]="mccConfig.ClientPub.KeepAlive" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.KeepAlive" placeholder="" [ngModel]="mccConfig?.ClientPub?.KeepAlive">
     </div>
     <div class="input">
       <label for="ClientPub.PingTimeout">Ping Timeout (s):</label><br>
-      <input name="ClientPub.PingTimeout" placeholder="" [(ngModel)]="mccConfig.ClientPub.PingTimeout" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.PingTimeout" placeholder="" [ngModel]="mccConfig?.ClientPub?.PingTimeout">
     </div>
     <div class="input">
       <label for="ClientPub.ConnectRetry">Connection Retry:</label><br>
-      <input name="ClientPub.ConnectRetry" placeholder="" [(ngModel)]="mccConfig.ClientPub.ConnectRetry" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.ConnectRetry" placeholder="" [ngModel]="mccConfig?.ClientPub?.ConnectRetry">
     </div>
     <div class="input">
       <label for="ClientPub.AutoConnect">Auto Connect:</label><br>
-      <input name="ClientPub.AutoConnect" placeholder="" [(ngModel)]="mccConfig.ClientPub.AutoConnect" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.AutoConnect" placeholder="" [ngModel]="mccConfig?.ClientPub?.AutoConnect">
     </div>
     <div class="input">
       <label for="ClientPub.OrderMaters">Order Maters:</label><br>
-      <input name="ClientPub.OrderMaters" placeholder="" [(ngModel)]="mccConfig.ClientPub.OrderMaters" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.OrderMaters" placeholder="" [ngModel]="mccConfig?.ClientPub?.OrderMaters">
     </div>
     <div class="input">
       <label for="ClientPub.UserName">User Name:</label><br>
-      <input name="ClientPub.UserName" placeholder="" [(ngModel)]="mccConfig.ClientPub.UserName" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.UserName" placeholder="" [ngModel]="mccConfig?.ClientPub?.UserName">
     </div>
     <div class="input">
       <label for="ClientPub.Password">Password:</label><br>
-      <input name="ClientPub.Password" placeholder="" [(ngModel)]="mccConfig.ClientPub.Password" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.Password" placeholder="" [ngModel]="mccConfig?.ClientPub?.Password">
     </div>
     <div class="input">
       <label for="ClientPub.TlsConn">TLS Connection:</label><br>
-      <input name="ClientPub.TlsConn" placeholder="" [(ngModel)]="mccConfig.ClientPub.TlsConn" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.TlsConn" placeholder="" [ngModel]="mccConfig?.ClientPub?.TlsConn">
     </div>
     <div class="input">
       <label for="ClientPub.RootCAPath">Root CA path:</label><br>
-      <input name="ClientPub.RootCAPath" placeholder="" [(ngModel)]="mccConfig.ClientPub.RootCAPath" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.RootCAPath" placeholder="" [ngModel]="mccConfig?.ClientPub?.RootCAPath">
     </div>
     <div class="input">
       <label for="ClientPub.ClientKeyPath">Client Key Path:</label><br>
-      <input name="ClientPub.ClientKeyPath" placeholder="" [(ngModel)]="mccConfig.ClientPub.ClientKeyPath" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.ClientKeyPath" placeholder="" [ngModel]="mccConfig?.ClientPub?.ClientKeyPath">
     </div>
     <div class="input">
       <label for="ClientPub.PrivateKeyPath">Private Key Path:</label><br>
-      <input name="ClientPub.PrivateKeyPath" placeholder="" [(ngModel)]="mccConfig.ClientPub.PrivateKeyPath" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.PrivateKeyPath" placeholder="" [ngModel]="mccConfig?.ClientPub?.PrivateKeyPath">
     </div>
     <div class="input">
       <label for="ClientPub.InsecureSkipVerify">Insecure Skip Verify:</label><br>
-      <input name="ClientPub.InsecureSkipVerify" placeholder="" [(ngModel)]="mccConfig.ClientPub.InsecureSkipVerify" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input name="ClientPub.InsecureSkipVerify" placeholder="" [ngModel]="mccConfig?.ClientPub?.InsecureSkipVerify">
     </div>
   </div>
   <div class="Logs">
     <h3>Log Options</h3>
     <div class="checkbox">
       <label for="Logs.SubPayload">Sub Payload:</label><br>
-      <input type="checkbox" name="Logs.SubPayload" placeholder="" [(ngModel)]="mccConfig.Logs.SubPayload" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input type="checkbox" name="Logs.SubPayload" placeholder="" [ngModel]="mccConfig?.Logs?.SubPayload">
     </div>
     <div class="checkbox">
       <label for="Logs.Debug">Debug Level:</label><br>
-      <input type="checkbox" name="Logs.Debug" placeholder="" [(ngModel)]="mccConfig.Logs.Debug" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input type="checkbox" name="Logs.Debug" placeholder="" [ngModel]="mccConfig?.Logs?.Debug">
     </div>
     <div class="checkbox">
       <label for="Logs.Warning">Warning Level:</label><br>
-      <input type="checkbox" name="Logs.Warning" placeholder="" [(ngModel)]="mccConfig.Logs.Warning" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input type="checkbox" name="Logs.Warning" placeholder="" [ngModel]="mccConfig?.Logs?.Warning">
     </div>
     <div class="checkbox">
       <label for="Logs.Error">Error Level:</label><br>
-      <input type="checkbox" name="Logs.Error" placeholder="" [(ngModel)]="mccConfig.Logs.Error" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input type="checkbox" name="Logs.Error" placeholder="" [ngModel]="mccConfig?.Logs?.Error">
     </div>
     <div class="checkbox">
       <label for="Logs.Critical">Critical Level:</label><br>
-      <input type="checkbox" name="Logs.Critical" placeholder="" [(ngModel)]="mccConfig.Logs.Critical" *ngIf="mccConfig?.ClientPub?.ClientId">
+      <input type="checkbox" name="Logs.Critical" placeholder="" [ngModel]="mccConfig?.Logs?.Critical">
     </div>
 </div> 

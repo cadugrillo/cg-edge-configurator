@@ -1,7 +1,7 @@
 clientSub:
-    clientId: cg_subscriber
-    serverAddress: tcp://test.mosquitto.org:1883
-    qos: 1
+    clientId: cg_subscriber1
+    serverAddress: tcp://test.mosquitto.org:1884
+    qos: 10
     connectionTimeout: 1
     writeTimeout: 1
     keepAlive: 30
@@ -44,9 +44,9 @@ logs:
     critical: false
 topicsSub:
     topic:
-        - cg-connector/sample/11
-        - cg-connector/sample/12
-        - cg-connector/sample/13
+        - cg-connector/sample/1
+        - cg-connector/sample/2
+        - cg-connector/sample/3
 topicsPub:
     topic:
         - cg-connector/sample/21

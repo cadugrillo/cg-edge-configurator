@@ -9,7 +9,8 @@ import { CgEdgeConfigService, MccConfig } from '../cg-edge-config.service';
 export class MqttCloudConnectorComponent implements OnInit {
 
   appName!: string;
-  mccConfig!: MccConfig;
+  newTopic!: string;
+  mccConfig: MccConfig = new MccConfig();
 
   constructor(private CgEdgeConfigService: CgEdgeConfigService) { }
 
@@ -33,12 +34,17 @@ export class MqttCloudConnectorComponent implements OnInit {
     
   }
 
-  addTopic() {
-    
+  addSubTopic() {
+    this.newTopic = "newtopic/sample"
+    this.mccConfig.TopicsSub.Topic.push(this.newTopic)
   }
 
-  deleteTopic() {
-    
+  deleteSubTopic() {
+    this.mccConfig.TopicsSub.Topic.splice(-1)
   }
+
+  trackByFn(index: any, item: any) {
+    return index;
+ }
 
 }
