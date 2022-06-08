@@ -31,7 +31,7 @@ export class MccConfig {
 }
 
 export class OpcuaConfig {
-  OpcuaClient!: OpcuaClient;
+  OpcUaClient!: OpcuaClient;
   ClientPub!: ClientPub;
   Logs!: Logs;
   TopicsPub!: TopicsPub;

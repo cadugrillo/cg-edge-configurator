@@ -5,7 +5,7 @@
 </div>
 <div class="clients">
 <div class="ClientSub">
-    <h3>Client Subscriber</h3>
+    <h3>Subscriber: MQTT Client</h3>
     <div class="input">
       <label for="ClientSub.ClientId">Client ID:</label><br>
       <input name="ClientSub.ClientId" placeholder="" [(ngModel)]="mccConfig.ClientSub.ClientId" *ngIf="mccConfig?.ClientSub">
@@ -76,7 +76,7 @@
     </div>
   </div>
   <div class="ClientPub">
-    <h3>Client Publisher</h3>
+    <h3>Publisher: MQTT Client</h3>
     <div class="input">
       <label for="ClientPub.ClientId">Client ID:</label><br>
       <input name="ClientPub.ClientId" placeholder="" [(ngModel)]="mccConfig.ClientPub.ClientId" *ngIf="mccConfig?.ClientPub">

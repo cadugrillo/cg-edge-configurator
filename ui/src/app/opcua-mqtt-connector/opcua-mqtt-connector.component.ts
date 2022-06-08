@@ -11,7 +11,7 @@ export class OpcuaMqttConnectorComponent implements OnInit {
 
   appName!: string;
   newTopic!: string;
-  newNode!: Node;
+  newNode: Node = new Node();
   opcuaConfig: OpcuaConfig = new OpcuaConfig();
 
   constructor(private CgEdgeConfigService: CgEdgeConfigService) { }
@@ -37,8 +37,8 @@ export class OpcuaMqttConnectorComponent implements OnInit {
   }
 
   addNode() {
-    this.newNode.Name = "node name"
-    this.newNode.NodeID = "node ID"
+    this.newNode.Name = ""
+    this.newNode.NodeID = ""
     this.opcuaConfig.NodesToRead.Nodes.push(this.newNode)
   }
 
