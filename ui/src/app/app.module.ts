@@ -11,12 +11,14 @@ import { TokenInterceptor } from './token.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CgEdgeConfigService } from './cg-edge-config.service';
 import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-connector.component';
+import { OpcuaMqttConnectorComponent } from './opcua-mqtt-connector/opcua-mqtt-connector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MqttCloudConnectorComponent,
+    OpcuaMqttConnectorComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -1,5 +1,5 @@
 clientSub:
-    clientId: cg_subscriber1
+    clientId: cg_subscriber
     serverAddress: tcp://test.mosquitto.org:1885
     qos: 1
     connectionTimeout: 1

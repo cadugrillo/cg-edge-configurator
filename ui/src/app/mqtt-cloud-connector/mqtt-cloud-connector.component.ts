@@ -27,7 +27,7 @@ export class MqttCloudConnectorComponent implements OnInit {
   }
 
   setConfig() {
-    this.CgEdgeConfigService.setMccConfig(this.appName,this.mccConfig).subscribe((data) => {
+    this.CgEdgeConfigService.setMccConfig(this.mccConfig).subscribe((data) => {
       console.log(data)
       this.getConfig()
     });

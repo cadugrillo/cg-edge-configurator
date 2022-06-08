@@ -13,10 +13,13 @@ getConfig(appName: string) {
     return this.httpClient.get(environment.gateway + '/config/' + appName);
   }
 
-setMccConfig(appName: string, mccConfig: MccConfig) {
+setMccConfig(mccConfig: MccConfig) {
     return this.httpClient.post(environment.gateway + '/config/mqtt-cloud-connector', mccConfig);
   }
 
+setOpcuaConfig(opcuaConfig: OpcuaConfig) {
+    return this.httpClient.post(environment.gateway + '/config/opcua-mqtt-connector', opcuaConfig);
+  }
 }
 
 export class MccConfig {
@@ -25,6 +28,14 @@ export class MccConfig {
   Logs!: Logs;
   TopicsSub!: TopicsSub;
   TopicsPub!: TopicsPub;
+}
+
+export class OpcuaConfig {
+  OpcuaClient!: OpcuaClient;
+  ClientPub!: ClientPub;
+  Logs!: Logs;
+  TopicsPub!: TopicsPub;
+  NodesToRead!: NodesToRead;
 }
 
 class ClientSub {
@@ -67,7 +78,15 @@ class ClientPub {
   InsecureSkipVerify!: boolean;
   TranslateTopic!:     boolean;
   PublishInterval!:    number;
+}
 
+class OpcuaClient {
+  ClientId!:           string;
+  ServerAddress!:      string;
+  PollInterval!:       number;
+  MaxAge!:             number;
+  MaxSignalsPerRead!:  number;
+  MinTimeBetweenRead!: number;
 }
 
 class Logs {
@@ -84,5 +103,14 @@ class TopicsSub {
 
 class TopicsPub {
   Topic!: string[];
+}
+
+class NodesToRead {
+  Nodes!: Node[];
+}
+
+export class Node {
+  Name!: string;
+  NodeID!: string;
 }
 
