@@ -12,6 +12,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CgEdgeConfigService } from './cg-edge-config.service';
 import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-connector.component';
 import { OpcuaMqttConnectorComponent } from './opcua-mqtt-connector/opcua-mqtt-connector.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { OpcuaMqttConnectorComponent } from './opcua-mqtt-connector/opcua-mqtt-c
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [CgEdgeConfigService,{
     provide: HTTP_INTERCEPTORS,
