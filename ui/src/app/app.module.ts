@@ -20,6 +20,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MessagePopupComponent } from './message-popup/message-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule,
-    MatDialogModule
+    MatDialogModule,
+    MatToolbarModule
   ],
   providers: [CgEdgeConfigService,{
     provide: HTTP_INTERCEPTORS,
