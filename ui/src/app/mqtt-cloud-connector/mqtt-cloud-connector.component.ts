@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CgEdgeConfigService, MccConfig } from '../cg-edge-config.service';
+import {MatDialog} from '@angular/material/dialog';
+import { MessagePopupComponent} from '../message-popup/message-popup.component';
 
 @Component({
   selector: 'app-mqtt-cloud-connector',
@@ -12,7 +14,8 @@ export class MqttCloudConnectorComponent implements OnInit {
   newTopic!: string;
   mccConfig: MccConfig = new MccConfig();
 
-  constructor(private CgEdgeConfigService: CgEdgeConfigService) { }
+  constructor(private CgEdgeConfigService: CgEdgeConfigService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getConfig();
@@ -21,14 +24,13 @@ export class MqttCloudConnectorComponent implements OnInit {
   getConfig() {
     this.appName = "mqtt-cloud-connector"
     this.CgEdgeConfigService.getConfig(this.appName).subscribe((data) => {
-      this.mccConfig = (data as MccConfig)
-      console.log(this.mccConfig)
+      this.mccConfig = (data as MccConfig);
     });
   }
 
   setConfig() {
     this.CgEdgeConfigService.setMccConfig(this.mccConfig).subscribe((data) => {
-      console.log(data)
+      this.dialog.open(MessagePopupComponent, {data: {text: data}});
       this.getConfig()
     });
     

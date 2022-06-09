@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CgEdgeConfigService, OpcuaConfig, Node } from '../cg-edge-config.service';
+import {MatDialog} from '@angular/material/dialog';
+import { MessagePopupComponent} from '../message-popup/message-popup.component';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class OpcuaMqttConnectorComponent implements OnInit {
   newNode: Node = new Node();
   opcuaConfig: OpcuaConfig = new OpcuaConfig();
 
-  constructor(private CgEdgeConfigService: CgEdgeConfigService) { }
+  constructor(private CgEdgeConfigService: CgEdgeConfigService,
+              public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getConfig();
@@ -24,13 +27,12 @@ export class OpcuaMqttConnectorComponent implements OnInit {
     this.appName = "opcua-mqtt-connector"
     this.CgEdgeConfigService.getConfig(this.appName).subscribe((data) => {
       this.opcuaConfig = (data as OpcuaConfig)
-      console.log(this.opcuaConfig)
     });
   }
 
   setConfig() {
     this.CgEdgeConfigService.setOpcuaConfig(this.opcuaConfig).subscribe((data) => {
-      console.log(data)
+      this.dialog.open(MessagePopupComponent, {data: {text: data}});
       this.getConfig()
     });
     

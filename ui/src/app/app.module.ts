@@ -18,6 +18,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MessagePopupComponent } from './message-popup/message-popup.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     HomeComponent,
     MqttCloudConnectorComponent,
     OpcuaMqttConnectorComponent,
+    MessagePopupComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -37,7 +40,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   providers: [CgEdgeConfigService,{
     provide: HTTP_INTERCEPTORS,
