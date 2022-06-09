@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './token.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CgEdgeConfigService } from './cg-edge-config.service';
+import { AppSettingsService } from './app-settings.service';
 import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-connector.component';
 import { OpcuaMqttConnectorComponent } from './opcua-mqtt-connector/opcua-mqtt-connector.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +22,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MessagePopupComponent } from './message-popup/message-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -43,9 +45,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTabsModule
   ],
-  providers: [CgEdgeConfigService,{
+  providers: [CgEdgeConfigService, AppSettingsService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

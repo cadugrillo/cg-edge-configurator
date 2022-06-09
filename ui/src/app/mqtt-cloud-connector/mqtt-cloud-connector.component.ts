@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CgEdgeConfigService, MccConfig } from '../cg-edge-config.service';
+import { AppSettingsService } from '../app-settings.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent} from '../message-popup/message-popup.component';
 
@@ -15,6 +16,7 @@ export class MqttCloudConnectorComponent implements OnInit {
   mccConfig: MccConfig = new MccConfig();
 
   constructor(private CgEdgeConfigService: CgEdgeConfigService,
+              private AppSettingsService: AppSettingsService,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -56,6 +58,12 @@ export class MqttCloudConnectorComponent implements OnInit {
 
   trackByFn(index: any, item: any) {
     return index;
+ }
+
+ onFilesAdded() {
+  this.AppSettingsService.getJSON().subscribe((data) => {
+    console.log(data)
+  });
  }
 
 }
