@@ -1,28 +1,25 @@
-h1 {
-    text-align:center;
-    display: block;
-    font-size: 2em;
-    margin-top: 0.67em;
-    margin-bottom: 0.67em;
-    margin-left: 0;
-    margin-right: 0;
-    font-weight: bold;
-
-}
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
 .buttons {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  margin-left: 30px;
+  padding: 15px;
+  width: auto;
+  margin: 5px;
 }
 
-.button {
-  margin-left: 30px;
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 18px;
+  margin-left: 8px;
+  min-width: 190px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px;
 }

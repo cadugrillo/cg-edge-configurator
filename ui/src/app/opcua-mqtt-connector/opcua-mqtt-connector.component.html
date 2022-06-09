@@ -34,151 +34,97 @@
           <mat-label>Min Time Between Read (ms)</mat-label>
           <input matInput type="number" placeholder="" [(ngModel)]="opcuaConfig.OpcUaClient.MinTimeBetweenRead">
         </mat-form-field>
-        <section>
-          <div class="example-label">Nodes to Read</div>
-          <div class="example-button-row">
-            <button mat-mini-fab color="primary" (click)="addNode()">
-              <mat-icon>exposure_plus_1</mat-icon>
-            </button>
-            <button mat-mini-fab color="warn" (click)="deleteNode()">
-              <mat-icon>exposure_neg_1</mat-icon>
-            </button>
-          </div>
-        </section>
-        <div class name="nodes" *ngFor="let Node of opcuaConfig?.NodesToRead?.Nodes; let i = index; trackBy:trackByFn">
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Node {{i}} Name</mat-label>
-            <input matInput placeholder="Node Name" [(ngModel)]="opcuaConfig.NodesToRead.Nodes[i].Name">
-          </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Node {{i}} ID</mat-label>
-          <input matInput placeholder="Node ID" [(ngModel)]="opcuaConfig.NodesToRead.Nodes[i].NodeID">
-          </mat-form-field>
-        </div>  
-
-
-
-
-        <div class name="nodes"topics *ngFor="let Node of opcuaConfig?.NodesToRead?.Nodes; let i = index; trackBy:trackByFn">
-          <input placeholder="Node Name" [(ngModel)]="opcuaConfig.NodesToRead.Nodes[i].Name">
-          <input placeholder="Node ID" [(ngModel)]="opcuaConfig.NodesToRead.Nodes[i].NodeID">
-        </div>  
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-        
-        
-          
     </div>
     <div class="ClientPub">
       <h3>Publisher: MQTT Client</h3>
-      <div class="input">
-        <label for="ClientPub.ClientId">Client ID:</label><br>
-        <input name="ClientPub.ClientId" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.ClientId" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.ServerAddress">Server Address:</label><br>
-        <input name="ClientPub.ServerAddress" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.ServerAddress" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.Qos">Quality of Service:</label><br>
-        <input type="number" name="ClientPub.Qos" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.Qos" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.ConnectionTimeout">Connection Timeout (s):</label><br>
-        <input type="number" name="ClientPub.ConnectionTimeout" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.ConnectionTimeout" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.WriteTimeout">Write Timeout (s):</label><br>
-        <input type="number" name="ClientPub.WriteTimeout" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.WriteTimeout" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.KeepAlive">Keep Alive (s):</label><br>
-        <input type="number" name="ClientPub.KeepAlive" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.KeepAlive" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.PingTimeout">Ping Timeout (s):</label><br>
-        <input type="number" name="ClientPub.PingTimeout" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.PingTimeout" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.ConnectRetry">Connection Retry:</label><br>
-        <input type="checkbox" name="ClientPub.ConnectRetry" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.ConnectRetry" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.AutoConnect">Auto Connect:</label><br>
-        <input type="checkbox" name="ClientPub.AutoConnect" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.AutoConnect" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.OrderMaters">Order Maters:</label><br>
-        <input type="checkbox" name="ClientPub.OrderMaters" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.OrderMaters" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.UserName">User Name:</label><br>
-        <input name="ClientPub.UserName" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.UserName" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.Password">Password:</label><br>
-        <input name="ClientPub.Password" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.Password" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.TlsConn">TLS Connection:</label><br>
-        <input type="checkbox" name="ClientPub.TlsConn" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.TlsConn" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.InsecureSkipVerify">Insecure Skip Verify:</label><br>
-        <input type="checkbox" name="ClientPub.InsecureSkipVerify" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.InsecureSkipVerify" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.RootCAPath">Root CA path:</label><br>
-        <input name="ClientPub.RootCAPath" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.RootCAPath" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.ClientKeyPath">Client Key Path:</label><br>
-        <input name="ClientPub.ClientKeyPath" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.ClientKeyPath" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.PrivateKeyPath">Private Key Path:</label><br>
-        <input name="ClientPub.PrivateKeyPath" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.PrivateKeyPath" *ngIf="opcuaConfig?.ClientPub">
-      </div>
-      <div class="input">
-        <label for="ClientPub.TopicsPub">Topics to Publish to:</label><br>
-        <input name="ClientPub.TopicsPub" placeholder="" [(ngModel)]="opcuaConfig.TopicsPub.Topic[0]" *ngIf="opcuaConfig?.TopicsPub">
-      </div>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Client ID</mat-label>
+        <input matInput placeholder="client ID" [(ngModel)]="opcuaConfig.ClientPub.ClientId">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Server Address</mat-label>
+        <input matInput placeholder="tcp://localhost:4840" [(ngModel)]="opcuaConfig.ClientPub.ServerAddress">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Quality of Service</mat-label>
+        <input matInput type="number" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.Qos" *ngIf="opcuaConfig?.ClientPub">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Connection Timeout (s)</mat-label>
+        <input matInput type="number" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.ConnectionTimeout" *ngIf="opcuaConfig?.ClientPub">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Write Timeout (s)</mat-label>
+        <input matInput type="number" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.WriteTimeout" *ngIf="opcuaConfig?.ClientPub">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Keep Alive (s)</mat-label>
+        <input matInput type="number" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.KeepAlive" *ngIf="opcuaConfig?.ClientPub">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Ping Timeout (s)</mat-label>
+        <input matInput type="number" placeholder="" [(ngModel)]="opcuaConfig.ClientPub.PingTimeout" *ngIf="opcuaConfig?.ClientPub">
+      </mat-form-field>
+      <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.ClientPub.ConnectRetry" *ngIf="opcuaConfig?.ClientPub">Connection Retry</mat-checkbox>
+      <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.ClientPub.AutoConnect" *ngIf="opcuaConfig?.ClientPub">Auto Connect</mat-checkbox>
+      <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.ClientPub.OrderMaters" *ngIf="opcuaConfig?.ClientPub">Order Maters</mat-checkbox>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>User Name</mat-label>
+        <input matInput placeholder="" [(ngModel)]="opcuaConfig.ClientPub.UserName" *ngIf="opcuaConfig?.ClientPub">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="" [(ngModel)]="opcuaConfig.ClientPub.Password" *ngIf="opcuaConfig?.ClientPub">
+      </mat-form-field>
+      <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.ClientPub.TlsConn" *ngIf="opcuaConfig?.ClientPub">TLS Connection</mat-checkbox>
+      <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.ClientPub.InsecureSkipVerify" *ngIf="opcuaConfig?.ClientPub">Skip Insecure Verification</mat-checkbox>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Root CA Path</mat-label>
+        <input matInput placeholder="" [(ngModel)]="opcuaConfig.ClientPub.RootCAPath">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Client Key Path</mat-label>
+        <input matInput placeholder="" [(ngModel)]="opcuaConfig.ClientPub.ClientKeyPath">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Private Key Path</mat-label>
+        <input matInput placeholder="" [(ngModel)]="opcuaConfig.ClientPub.PrivateKeyPath">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill"  *ngIf="opcuaConfig?.ClientPub">
+        <mat-label>Topics to Publish to</mat-label>
+        <input matInput placeholder="" [(ngModel)]="opcuaConfig.TopicsPub.Topic[0]" *ngIf="opcuaConfig?.TopicsPub">
+      </mat-form-field>
     </div>
     <div class="Logs">
       <h3>Log Options</h3>
       <div class="checkbox">
-        <label for="Logs.Debug">Debug Level:</label><br>
-        <input type="checkbox" name="Logs.Debug" placeholder="" [(ngModel)]="opcuaConfig.Logs.Debug" *ngIf="opcuaConfig?.Logs">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.Logs.Debug" *ngIf="opcuaConfig?.Logs">Debug Level</mat-checkbox>
       </div>
       <div class="checkbox">
-        <label for="Logs.Warning">Warning Level:</label><br>
-        <input type="checkbox" name="Logs.Warning" placeholder="" [(ngModel)]="opcuaConfig.Logs.Warning" *ngIf="opcuaConfig?.Logs">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.Logs.Warning" *ngIf="opcuaConfig?.Logs">Warning Level</mat-checkbox>
       </div>
       <div class="checkbox">
-        <label for="Logs.Error">Error Level:</label><br>
-        <input type="checkbox" name="Logs.Error" placeholder="" [(ngModel)]="opcuaConfig.Logs.Error" *ngIf="opcuaConfig?.Logs">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.Logs.Error" *ngIf="opcuaConfig?.Logs">Error Level</mat-checkbox>
       </div>
       <div class="checkbox">
-        <label for="Logs.Critical">Critical Level:</label><br>
-        <input type="checkbox" name="Logs.Critical" placeholder="" [(ngModel)]="opcuaConfig.Logs.Critical" *ngIf="opcuaConfig?.Logs">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="opcuaConfig.Logs.Critical" *ngIf="opcuaConfig?.Logs">Critical Level</mat-checkbox>
       </div>
+      <section>
+        <div class="example-label">OPCUA Nodes to Read</div>
+        <div class="example-button-row">
+          <button mat-raised-button color="primary" (click)="addNode()">+</button>
+          <button mat-raised-button color="primary" (click)="deleteNode()">-</button>
+        </div>
+      </section>
+      <div class name="nodes" *ngFor="let Node of opcuaConfig?.NodesToRead?.Nodes; let i = index; trackBy:trackByFn">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Node {{i}} Name</mat-label>
+          <input matInput placeholder="Node Name" [(ngModel)]="opcuaConfig.NodesToRead.Nodes[i].Name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Node {{i}} ID</mat-label>
+        <input matInput placeholder="Node ID" [(ngModel)]="opcuaConfig.NodesToRead.Nodes[i].NodeID">
+        </mat-form-field>
+      </div>     
     <div>  
   </div> 
