@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './token.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CgEdgeConfigService } from './cg-edge-config.service';
-import { AppSettingsService } from './app-settings.service';
 import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-connector.component';
 import { OpcuaMqttConnectorComponent } from './opcua-mqtt-connector/opcua-mqtt-connector.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -48,7 +47,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatToolbarModule,
     MatTabsModule
   ],
-  providers: [CgEdgeConfigService, AppSettingsService,{
+  providers: [CgEdgeConfigService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CgEdgeConfigService, MccConfig } from '../cg-edge-config.service';
-import { AppSettingsService } from '../app-settings.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent} from '../message-popup/message-popup.component';
+import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-mqtt-cloud-connector',
@@ -14,9 +14,9 @@ export class MqttCloudConnectorComponent implements OnInit {
   appName!: string;
   newTopic!: string;
   mccConfig: MccConfig = new MccConfig();
+  @ViewChild('file') file: any
 
   constructor(private CgEdgeConfigService: CgEdgeConfigService,
-              private AppSettingsService: AppSettingsService,
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -40,7 +40,7 @@ export class MqttCloudConnectorComponent implements OnInit {
 
   addSubTopic() {
     this.newTopic = "newtopic/sample"
-    this.mccConfig.TopicsSub.Topic.push(this.newTopic)
+    this.mccConfig.TopicsSub.Topic.push(this.newTopic);
   }
 
   deleteSubTopic() {
@@ -49,21 +49,39 @@ export class MqttCloudConnectorComponent implements OnInit {
 
   addPubTopic() {
     this.newTopic = "newtopic/sample"
-    this.mccConfig.TopicsPub.Topic.push(this.newTopic)
+    this.mccConfig.TopicsPub.Topic.push(this.newTopic);
   }
 
   deletePubTopic() {
-    this.mccConfig.TopicsPub.Topic.splice(-1)
+    this.mccConfig.TopicsPub.Topic.splice(-1);
   }
 
   trackByFn(index: any, item: any) {
     return index;
  }
 
- onFilesAdded() {
-  this.AppSettingsService.getJSON().subscribe((data) => {
-    console.log(data)
-  });
+ importConfig() {
+  this.file.nativeElement.click();
  }
 
+ onFilesAdded() {
+  const jsonfile = this.file.nativeElement.files[0];
+  this.file.nativeElement.value = "";
+  let fileReader  = new FileReader();
+  fileReader.readAsText(jsonfile);
+  fileReader.onload = () => {
+    const jsonfiletext = fileReader.result
+    let jsonObject: any = JSON.parse(jsonfiletext as string);
+    let finalObject: MccConfig = <MccConfig>jsonObject;
+    this.mccConfig = finalObject;
+    this.setConfig();
+  }
+ }
+
+ exportConfig() {
+  let exportData = this.mccConfig;
+  return saveAs(new Blob([JSON.stringify(exportData, null, 2)], { type: 'JSON' }), 'data.json');
 }
+
+}
+

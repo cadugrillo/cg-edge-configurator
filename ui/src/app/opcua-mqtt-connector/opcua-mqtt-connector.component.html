@@ -8,6 +8,9 @@
     <div class="example-button-row">
       <button mat-raised-button color="primary" (click)="getConfig()">Read Configuration</button>
       <button mat-raised-button color="primary" (click)="setConfig()">Write Configuration</button>
+      <button mat-raised-button color="primary" (click)="importConfig()">Import Configuration</button>
+      <input type="file" #file accept=".json" style="display: none" (change)="onFilesAdded()"/>
+      <button mat-raised-button color="primary" (click)="exportConfig()">Export Configuration</button> 
     </div>
   </section>
 </div>

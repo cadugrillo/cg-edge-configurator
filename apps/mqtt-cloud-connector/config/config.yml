@@ -1,7 +1,7 @@
 clientSub:
-    clientId: cg_subscriber1
-    serverAddress: tcp://test.mosquitto.org:1883
-    qos: 1
+    clientId: cg_subscriberItworks
+    serverAddress: tcp://test.mosquitto.org:1884
+    qos: 2
     connectionTimeout: 1
     writeTimeout: 1
     keepAlive: 30

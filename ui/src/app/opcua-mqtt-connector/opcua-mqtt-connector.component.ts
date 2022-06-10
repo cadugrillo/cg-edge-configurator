@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CgEdgeConfigService, OpcuaConfig, Node } from '../cg-edge-config.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent} from '../message-popup/message-popup.component';
-
+import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-opcua-mqtt-connector',
@@ -15,6 +15,7 @@ export class OpcuaMqttConnectorComponent implements OnInit {
   newTopic!: string;
   newNode: Node = new Node();
   opcuaConfig: OpcuaConfig = new OpcuaConfig();
+  @ViewChild('file') file: any
 
   constructor(private CgEdgeConfigService: CgEdgeConfigService,
               public dialog: MatDialog) {}
@@ -60,5 +61,28 @@ export class OpcuaMqttConnectorComponent implements OnInit {
   trackByFn(index: any, item: any) {
     return index;
  }
+
+ importConfig() {
+  this.file.nativeElement.click();
+ }
+
+ onFilesAdded() {
+  const jsonfile = this.file.nativeElement.files[0];
+  this.file.nativeElement.value = "";
+  let fileReader  = new FileReader();
+  fileReader.readAsText(jsonfile);
+  fileReader.onload = () => {
+    const jsonfiletext = fileReader.result
+    let jsonObject: any = JSON.parse(jsonfiletext as string);
+    let finalObject: OpcuaConfig = <OpcuaConfig>jsonObject;
+    this.opcuaConfig = finalObject;
+    this.setConfig();
+  }
+ }
+
+ exportConfig() {
+  let exportData = this.opcuaConfig;
+  return saveAs(new Blob([JSON.stringify(exportData, null, 2)], { type: 'JSON' }), 'data.json');
+}
 
 }
