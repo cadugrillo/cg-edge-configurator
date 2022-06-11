@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { AppsComponent } from './apps/apps.component';
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './token.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CgEdgeConfigService } from './cg-edge-config.service';
+import { Menu1Item1Component } from './menu1-item1/menu1-item1.component'
+import { Menu1Item1Side1Component } from './menu1-item1-side1/menu1-item1-side1.component'
 import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-connector.component';
 import { OpcuaMqttConnectorComponent } from './opcua-mqtt-connector/opcua-mqtt-connector.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,14 +24,27 @@ import { MessagePopupComponent } from './message-popup/message-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppRepositoryComponent } from './app-repository/app-repository.component';
+import { UsersComponent } from './users/users.component';
+import { SystemComponent } from './system/system.component';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
+    AppsComponent,
+    Menu1Item1Component,
+    Menu1Item1Side1Component,
     MqttCloudConnectorComponent,
     OpcuaMqttConnectorComponent,
     MessagePopupComponent,
+    DashboardComponent,
+    AppRepositoryComponent,
+    UsersComponent,
+    SystemComponent,
+    SettingsComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -45,7 +60,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatCheckboxModule,
     MatDialogModule,
     MatToolbarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatListModule
   ],
   providers: [CgEdgeConfigService, {
     provide: HTTP_INTERCEPTORS,
