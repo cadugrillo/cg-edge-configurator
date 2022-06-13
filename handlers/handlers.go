@@ -9,6 +9,7 @@ import (
 	mqttcloudconfig "cg-edge-configurator/apps/mqtt-cloud-connector/config"
 	opcuaconfig "cg-edge-configurator/apps/opcua-mqtt-connector/config"
 	"cg-edge-configurator/configurator"
+	"cg-edge-configurator/containers"
 
 	"github.com/gin-gonic/gin"
 )
@@ -49,6 +50,10 @@ func SetConfigHandler(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusBadRequest, "App not found")
+}
+
+func GetContainersHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, containers.GetContainers())
 }
 
 func DeleteConfigHandler(c *gin.Context) {

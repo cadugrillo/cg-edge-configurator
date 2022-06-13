@@ -24,6 +24,7 @@ func main() {
 	})
 
 	r.GET("/config/:appName", handlers.GetConfigHandler)
+	r.GET("/containers/ps", handlers.GetContainersHandler)
 	r.POST("/config/:appName", handlers.SetConfigHandler)
 	//r.DELETE("/config/:appName", handlers.DeleteConfigHandler)
 	//r.PUT("/config/:appName", handlers.PutConfigHandler)
