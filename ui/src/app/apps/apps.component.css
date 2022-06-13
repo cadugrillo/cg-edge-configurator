@@ -4,6 +4,10 @@
   margin: 5px;
 }
 
+button {
+  height: 100px;
+}
+
 section {
   display: table;
 }
@@ -17,9 +21,9 @@ section {
 
 .example-button-row {
   display: table-cell;
-  width: 490px;
+  width: 600px;
 }
 
 .example-button-row .mat-button-base {
-  margin: 8px 8px;
+  margin: 20px 20px;
 }

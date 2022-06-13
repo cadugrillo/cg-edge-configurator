@@ -21,7 +21,7 @@
 }
 
 
-.ClientSub, .ClientPub {
+.ClientSub, .ClientPub, .OpcuaClient {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -41,7 +41,7 @@ input {
 
 .clients {
   display: inline-grid;
-  grid-template-columns: 450px 450px 450px;
+  grid-template-columns: 410px 410px 420px;
 }
 
 

@@ -5,17 +5,6 @@
     margin: 5px;
   }
   
-h1 {
-  text-align:center;
-  display: block;
-  font-size: 2em;
-  margin-top: 0.67em;
-  margin-bottom: 0.67em;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
-}
-
 .input {
   width: 100%;
   margin-bottom: 0.3em;
@@ -32,7 +21,7 @@ h1 {
 }
 
 
-.OpcuaClient, .ClientPub {
+.ClientSub, .ClientPub, .OpcuaClient {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -52,7 +41,7 @@ input {
 
 .clients {
   display: inline-grid;
-  grid-template-columns: 450px 450px 450px;
+  grid-template-columns:  410px 410px 420px;
 }
 
 
