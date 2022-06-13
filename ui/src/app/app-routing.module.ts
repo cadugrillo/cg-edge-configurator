@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'Users', component: UsersComponent},
   { path: 'System', component: SystemComponent},
   { path: 'Settings', component: SettingsComponent},
-  { path: 'mcc-config', component: MqttCloudConnectorComponent},
+  { path: 'mqtt-cloud-connector', component: MqttCloudConnectorComponent},
   { path: 'opcua-config', component: OpcuaMqttConnectorComponent},
   { path: '**', redirectTo: 'Dashboard'},
  

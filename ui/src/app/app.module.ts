@@ -20,16 +20,19 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
 import { MessagePopupComponent } from './message-popup/message-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRepositoryComponent } from './app-repository/app-repository.component';
 import { UsersComponent } from './users/users.component';
 import { SystemComponent } from './system/system.component';
 import { SettingsComponent } from './settings/settings.component';
+import { CgEdgeContainersService } from './cg-edge-containers.service';
 
 @NgModule({
   declarations: [
@@ -61,9 +64,11 @@ import { SettingsComponent } from './settings/settings.component';
     MatDialogModule,
     MatToolbarModule,
     MatTabsModule,
-    MatListModule
+    MatListModule,
+    MatCardModule,
+    MatMenuModule
   ],
-  providers: [CgEdgeConfigService, {
+  providers: [CgEdgeConfigService, CgEdgeContainersService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

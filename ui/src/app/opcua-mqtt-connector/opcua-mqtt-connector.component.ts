@@ -33,7 +33,7 @@ export class OpcuaMqttConnectorComponent implements OnInit {
 
   setConfig() {
     this.CgEdgeConfigService.setOpcuaConfig(this.opcuaConfig).subscribe((data) => {
-      this.dialog.open(MessagePopupComponent, {data: {text: data}});
+      this.dialog.open(MessagePopupComponent, {data: {title: "Write Configuration", text: data}});
       this.getConfig()
     });
     

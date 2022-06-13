@@ -1,29 +1,12 @@
-.buttons {
-  padding: 15px;
-  width: auto;
-  margin: 5px;
+.containers {
+  padding: 30px;
+  display: inline-grid;
+  grid-template-columns: 380px 380px 380px;
 }
 
-button {
-  height: 100px;
-}
-
-section {
-  display: table;
-}
-
-.example-label {
-  display: table-cell;
-  font-size: 18px;
-  margin-left: 8px;
-  min-width: 190px;
-}
-
-.example-button-row {
-  display: table-cell;
-  width: 600px;
-}
-
-.example-button-row .mat-button-base {
-  margin: 20px 20px;
+.example-card {
+  max-width: 300px;
+  max-height: 300px;
+  margin-bottom: 80px;
+  background-color: rgb(225, 238, 247);
 }

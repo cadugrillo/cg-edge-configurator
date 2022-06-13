@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	apps_repository "cg-edge-configurator/apps-repository"
 	mqttcloudconfig "cg-edge-configurator/apps/mqtt-cloud-connector/config"
 	opcuaconfig "cg-edge-configurator/apps/opcua-mqtt-connector/config"
 	"cg-edge-configurator/configurator"
@@ -14,7 +15,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// GetTodoListHandler returns all current todo items
 func GetConfigHandler(c *gin.Context) {
 	appName := c.Param("appName")
 	switch appName {
@@ -28,7 +28,6 @@ func GetConfigHandler(c *gin.Context) {
 	c.JSON(http.StatusBadRequest, "App not found")
 }
 
-// AddTodoHandler adds a new todo to the todo list
 func SetConfigHandler(c *gin.Context) {
 	appName := c.Param("appName")
 	switch appName {
@@ -56,12 +55,28 @@ func GetContainersHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, containers.GetContainers())
 }
 
-func DeleteConfigHandler(c *gin.Context) {
-
+func GetAppRepositoryHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, apps_repository.GetApps())
 }
 
-func PutConfigHandler(c *gin.Context) {
+func StartContainerHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, containers.StartContainer(Id))
+}
 
+func StopContainerHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, containers.StopContainer(Id))
+}
+
+func RestartContainerHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, containers.RestartContainer(Id))
+}
+
+func RemoveContainerHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, containers.RemoveContainer(Id))
 }
 
 func convertHTTPBodyMccConfig(httpBody io.ReadCloser) (mqttcloudconfig.Config, int, error) {

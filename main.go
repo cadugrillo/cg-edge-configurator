@@ -24,14 +24,19 @@ func main() {
 	})
 
 	r.GET("/config/:appName", handlers.GetConfigHandler)
-	r.GET("/containers/ps", handlers.GetContainersHandler)
 	r.POST("/config/:appName", handlers.SetConfigHandler)
+	r.GET("/containers/json", handlers.GetContainersHandler)
+	r.GET("/containers/repository", handlers.GetAppRepositoryHandler)
+	r.POST("/containers/:Id/start", handlers.StartContainerHandler)
+	r.POST("/containers/:Id/stop", handlers.StopContainerHandler)
+	r.POST("/containers/:Id/restart", handlers.RestartContainerHandler)
+	r.POST("/containers/:Id/remove", handlers.RemoveContainerHandler)
 	//r.DELETE("/config/:appName", handlers.DeleteConfigHandler)
 	//r.PUT("/config/:appName", handlers.PutConfigHandler)
 
 	httpPort := os.Getenv("HTTP_PORT")
 	if httpPort == "" {
-		httpPort = "4300"
+		httpPort = "4343"
 	}
 
 	err := r.Run(":" + httpPort)

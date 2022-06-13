@@ -1,0 +1,12 @@
+.containersRepo {
+    padding: 30px;
+    display: inline-grid;
+    grid-template-columns: 480px 480px 480px;
+  }
+
+  .example-card {
+    max-width: 400px;
+    max-height: 300px;
+    margin-bottom: 80px;
+    background-color: rgb(225, 238, 247);
+  }
