@@ -79,6 +79,11 @@ func RemoveContainerHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, containers.RemoveContainer(Id))
 }
 
+func GetLogsHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, containers.Logs(Id))
+}
+
 func convertHTTPBodyMccConfig(httpBody io.ReadCloser) (mqttcloudconfig.Config, int, error) {
 	body, err := ioutil.ReadAll(httpBody)
 	if err != nil {

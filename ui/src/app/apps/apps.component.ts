@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CgEdgeContainersService, Container } from '../cg-edge-containers.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent} from '../message-popup/message-popup.component';
+import { Stream } from 'stream';
+import { ConsoleLogger } from '@aws-amplify/core';
 
 @Component({
   selector: 'app-home',
@@ -50,6 +52,13 @@ export class AppsComponent implements OnInit {
     this.CgEdgeContainerService.removeContainer(Id).subscribe((data) =>{
       this.dialog.open(MessagePopupComponent, {data: {title: "Remove App", text: data}});
       this.getContainers();
+    });
+  }
+
+  GetContainerLogs(Id: string) {
+    this.CgEdgeContainerService.getContainersLogs(Id).subscribe((data) =>{
+      this.dialog.open(MessagePopupComponent, {data: {title: "App Logs", text: data as string}});
+      //console.log(data)
     });
   }
 

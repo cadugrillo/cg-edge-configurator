@@ -129,3 +129,23 @@ func RemoveContainer(Id string) string {
 	fmt.Println("Success")
 	return "App successfully removed"
 }
+
+func Logs(Id string) string {
+	ctx := context.Background()
+	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+	if err != nil {
+		panic(err)
+	}
+
+	options := types.ContainerLogsOptions{ShowStdout: true}
+	out, err := cli.ContainerLogs(ctx, Id, options)
+	if err != nil {
+		panic(err)
+	}
+
+	if b, err := io.ReadAll(out); err == nil {
+		return string(b)
+	}
+	//io.Copy(os.Stdout, out)
+	return "no text to show"
+}
