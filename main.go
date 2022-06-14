@@ -28,6 +28,7 @@ func main() {
 	r.GET("/containers/json", handlers.GetContainersHandler)
 	r.GET("/containers/repository", handlers.GetAppRepositoryHandler)
 	r.GET("/containers/:Id/logs", handlers.GetLogsHandler)
+	r.POST("/containers/install", handlers.InstallContainerHandler)
 	r.POST("/containers/:Id/start", handlers.StartContainerHandler)
 	r.POST("/containers/:Id/stop", handlers.StopContainerHandler)
 	r.POST("/containers/:Id/restart", handlers.RestartContainerHandler)

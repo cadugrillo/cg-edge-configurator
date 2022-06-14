@@ -24,13 +24,7 @@ type Template struct {
 	Restart_policy string   `json:"restart_policy"`
 	Network        string   `json:"network"`
 	Ports          []string `json:"ports"`
-	Volumes        []Volume `json:"volumes"`
-}
-
-type Volume struct {
-	Container string `json:"container"`
-	Bind      string `json:"bind"`
-	Readonly  bool   `json:"readonly"`
+	Volumes        []string `json:"volumes"`
 }
 
 var (

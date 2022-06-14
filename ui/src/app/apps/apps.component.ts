@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CgEdgeContainersService, Container } from '../cg-edge-containers.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent} from '../message-popup/message-popup.component';
-import { Stream } from 'stream';
-import { ConsoleLogger } from '@aws-amplify/core';
 
 @Component({
   selector: 'app-home',

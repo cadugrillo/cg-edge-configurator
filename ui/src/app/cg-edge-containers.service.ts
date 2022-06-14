@@ -17,6 +17,10 @@ export class CgEdgeContainersService {
     return this.httpClient.get(environment.gateway + '/containers/'+ Id + '/logs');
   }
 
+  installContainer(AppTemplate: Template) {
+    return this.httpClient.post(environment.gateway + '/containers/install', AppTemplate);
+  }
+
   startContainer(Id: string) {
     return this.httpClient.post(environment.gateway + '/containers/'+ Id + '/start', '');
   }
@@ -70,7 +74,7 @@ export class ContainersRepo {
   templates!: Template[]
 }
 
-class Template {
+export class Template {
   type!: string
 	title!: string
 	name!: string
@@ -83,11 +87,5 @@ class Template {
 	restart_policy!: string
 	network!: string
 	ports!: string[]
-	volumes!: Volume[]
-}
-
-class Volume {
-  container!: string
-  bind!: string
-  readonly!: boolean
+	volumes!: string[]
 }

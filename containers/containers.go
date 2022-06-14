@@ -6,6 +6,8 @@ import (
 	"io"
 	"os"
 
+	apps_repository "cg-edge-configurator/apps-repository"
+
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/api/types/network"
@@ -16,9 +18,6 @@ import (
 var (
 	ContainerListOptions   types.ContainerListOptions
 	ContainerRemoveOptions types.ContainerRemoveOptions
-	ContainerConfig        container.Config
-	NetworkConfig          network.NetworkingConfig
-	HostConfig             container.HostConfig
 )
 
 func GetContainers() []types.Container {
@@ -39,43 +38,66 @@ func GetContainers() []types.Container {
 	return containers
 }
 
-func InstallContainer() string {
+func InstallContainer(AppTemplate apps_repository.Template) string {
 	ctx := context.Background()
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 	if err != nil {
 		panic(err)
 	}
 
-	imageName := "bfirsh/reticulate-splines"
-
-	out, err := cli.ImagePull(ctx, imageName, types.ImagePullOptions{})
+	out, err := cli.ImagePull(ctx, AppTemplate.Image, types.ImagePullOptions{})
 	if err != nil {
 		panic(err)
 	}
 	defer out.Close()
 	io.Copy(os.Stdout, out)
 
-	ContainerConfig.Image = imageName
-	ContainerConfig.Hostname = ""
-	ContainerConfig.Volumes = map[string]struct{}{}
-
-	NetworkConfig.EndpointsConfig = map[string]*network.EndpointSettings{"cg-edge": {}}
-
-	HostConfig.Binds = []string{}
-	HostConfig.RestartPolicy.Name = "always"
-	HostConfig.PortBindings = nat.PortMap{}
-
-	resp, err := cli.ContainerCreate(ctx, &ContainerConfig, &HostConfig, &NetworkConfig, nil, "containerName")
+	_, portBindings, err := nat.ParsePortSpecs(AppTemplate.Ports)
 	if err != nil {
-		panic(err)
+		fmt.Println("Unable to create docker port")
+		return "Unable to create docker port"
+	}
+
+	// Configured hostConfig:
+	HostConfig := &container.HostConfig{
+		Binds:        AppTemplate.Volumes,
+		NetworkMode:  container.NetworkMode(AppTemplate.Network),
+		PortBindings: portBindings,
+		RestartPolicy: container.RestartPolicy{
+			Name: AppTemplate.Restart_policy,
+		},
+		LogConfig: container.LogConfig{
+			Type:   "json-file",
+			Config: map[string]string{},
+		},
+	}
+
+	//////NETWORK CONFIGURATION////////
+	NetworkConfig := &network.NetworkingConfig{
+		EndpointsConfig: map[string]*network.EndpointSettings{},
+	}
+	gatewayConfig := &network.EndpointSettings{
+		Gateway: AppTemplate.Network,
+	}
+	NetworkConfig.EndpointsConfig[AppTemplate.Network] = gatewayConfig
+
+	// Configuration
+	ContainerConfig := &container.Config{
+		Image:    AppTemplate.Image,
+		Hostname: AppTemplate.Hostname,
+	}
+
+	resp, err := cli.ContainerCreate(ctx, ContainerConfig, HostConfig, NetworkConfig, nil, AppTemplate.Hostname)
+	if err != nil {
+		return err.Error()
 	}
 
 	if err := cli.ContainerStart(ctx, resp.ID, types.ContainerStartOptions{}); err != nil {
-		panic(err)
+		return err.Error()
 	}
 
 	fmt.Println(resp.ID)
-	return resp.ID
+	return fmt.Sprintf("App ID: %s installed successfuly", resp.ID[:10])
 }
 
 func StartContainer(Id string) string {

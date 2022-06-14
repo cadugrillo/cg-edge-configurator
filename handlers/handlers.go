@@ -59,6 +59,15 @@ func GetAppRepositoryHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, apps_repository.GetApps())
 }
 
+func InstallContainerHandler(c *gin.Context) {
+	AppTemplate, statusCode, err := convertHTTPBodyAppTemplate(c.Request.Body)
+	if err != nil {
+		c.JSON(statusCode, err)
+		return
+	}
+	c.JSON(http.StatusOK, containers.InstallContainer(AppTemplate))
+}
+
 func StartContainerHandler(c *gin.Context) {
 	Id := c.Param("Id")
 	c.JSON(http.StatusOK, containers.StartContainer(Id))
@@ -83,6 +92,8 @@ func GetLogsHandler(c *gin.Context) {
 	Id := c.Param("Id")
 	c.JSON(http.StatusOK, containers.Logs(Id))
 }
+
+///////////////CONVERSIONs OF HTTP BODY TO SPECIFIC STRUCTURES////////////////////////////
 
 func convertHTTPBodyMccConfig(httpBody io.ReadCloser) (mqttcloudconfig.Config, int, error) {
 	body, err := ioutil.ReadAll(httpBody)
@@ -110,4 +121,18 @@ func convertHTTPBodyOpcuaConfig(httpBody io.ReadCloser) (opcuaconfig.Config, int
 		return opcuaconfig.Config{}, http.StatusBadRequest, err
 	}
 	return Config, http.StatusOK, nil
+}
+
+func convertHTTPBodyAppTemplate(httpBody io.ReadCloser) (apps_repository.Template, int, error) {
+	body, err := ioutil.ReadAll(httpBody)
+	if err != nil {
+		return apps_repository.Template{}, http.StatusInternalServerError, err
+	}
+	defer httpBody.Close()
+	var AppTemplate apps_repository.Template
+	err = json.Unmarshal(body, &AppTemplate)
+	if err != nil {
+		return apps_repository.Template{}, http.StatusBadRequest, err
+	}
+	return AppTemplate, http.StatusOK, nil
 }

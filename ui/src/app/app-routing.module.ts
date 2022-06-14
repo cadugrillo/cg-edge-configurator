@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'System', component: SystemComponent},
   { path: 'Settings', component: SettingsComponent},
   { path: 'mqtt-cloud-connector', component: MqttCloudConnectorComponent},
-  { path: 'opcua-config', component: OpcuaMqttConnectorComponent},
+  { path: 'opcua-mqtt-connector', component: OpcuaMqttConnectorComponent},
   { path: '**', redirectTo: 'Dashboard'},
  
 
