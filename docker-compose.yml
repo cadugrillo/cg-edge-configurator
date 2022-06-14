@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   cg-edge-conf-api:
-    image: cadugrillo/cg-edge-conf-api:1.0
+    image: cadugrillo/cg-edge-conf-api:1.1
     container_name: cg-edge-conf-api
     restart: always
     volumes:
@@ -10,19 +10,19 @@ services:
         source: /home/edge/apps
         target: /apps
     networks:
-      - cg-edge-conf
+      - cg-conf
 
   cg-edge-conf:
-    image: cadugrillo/cg-edge-conf:1.0
+    image: cadugrillo/cg-edge-conf:1.1
     container_name: cg-edge-conf
     restart: always
     ports:
       - 80:80
     networks:
-      - cg-edge-conf
+      - cg-conf
 
 networks:
-   cg-edge-conf:
+   cg-conf:
     external: true
   
    
