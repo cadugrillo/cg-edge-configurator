@@ -10,6 +10,7 @@ import (
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/api/types/filters"
 	"github.com/docker/docker/api/types/network"
 	"github.com/docker/docker/client"
 	"github.com/docker/go-connections/nat"
@@ -26,6 +27,11 @@ func GetContainers() []types.Container {
 	if err != nil {
 		panic(err)
 	}
+
+	networkKeyValuePair := filters.KeyValuePair{Key: "network", Value: "cg-edge"}
+	networkFilter := filters.NewArgs(networkKeyValuePair)
+
+	ContainerListOptions.Filters = networkFilter
 	ContainerListOptions.All = true
 	containers, err := cli.ContainerList(ctx, ContainerListOptions)
 	if err != nil {
