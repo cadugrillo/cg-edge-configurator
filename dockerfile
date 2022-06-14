@@ -2,6 +2,7 @@
 
 FROM golang:1.16-alpine AS builder
 
+RUN apk --no-cache add ca-certificates
 WORKDIR /usr/local/go/src/cg-edge-configurator
 
 COPY go.mod ./
@@ -28,11 +29,11 @@ RUN ls /
 
 FROM scratch
 
-
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /cgEdgeConfApi /cgEdgeConfApi
 COPY --from=builder /apps /apps
 
-EXPOSE 4300
+EXPOSE 4343
 
 CMD [ "/cgEdgeConfApi" ]
 
