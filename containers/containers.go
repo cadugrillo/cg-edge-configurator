@@ -10,6 +10,7 @@ import (
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/api/types/network"
 	"github.com/docker/docker/client"
+	"github.com/docker/go-connections/nat"
 )
 
 var (
@@ -17,6 +18,7 @@ var (
 	ContainerRemoveOptions types.ContainerRemoveOptions
 	ContainerConfig        container.Config
 	NetworkConfig          network.NetworkingConfig
+	HostConfig             container.HostConfig
 )
 
 func GetContainers() []types.Container {
@@ -54,7 +56,16 @@ func InstallContainer() string {
 	io.Copy(os.Stdout, out)
 
 	ContainerConfig.Image = imageName
-	resp, err := cli.ContainerCreate(ctx, &ContainerConfig, nil, nil, nil, "containerName")
+	ContainerConfig.Hostname = ""
+	ContainerConfig.Volumes = map[string]struct{}{}
+
+	NetworkConfig.EndpointsConfig = map[string]*network.EndpointSettings{"cg-edge": {}}
+
+	HostConfig.Binds = []string{}
+	HostConfig.RestartPolicy.Name = "always"
+	HostConfig.PortBindings = nat.PortMap{}
+
+	resp, err := cli.ContainerCreate(ctx, &ContainerConfig, &HostConfig, &NetworkConfig, nil, "containerName")
 	if err != nil {
 		panic(err)
 	}
