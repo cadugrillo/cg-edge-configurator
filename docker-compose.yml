@@ -7,6 +7,9 @@ services:
     restart: always
     volumes:
       - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+      - type: bind
         source: /home/edge/apps
         target: /apps
     networks:
@@ -17,9 +20,6 @@ services:
     container_name: cg-edge-conf
     restart: always
     volumes:
-      - type: bind
-        source: /var/run/docker.sock
-        target: /var/run/docker.sock
     ports:
       - 80:80
     networks:

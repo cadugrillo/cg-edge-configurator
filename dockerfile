@@ -12,6 +12,7 @@ RUN go mod download
 
 COPY main.go ./
 COPY ./handlers/ /usr/local/go/src/cg-edge-configurator/handlers
+COPY ./system/ /usr/local/go/src/cg-edge-configurator/system
 COPY ./containers/ /usr/local/go/src/cg-edge-configurator/containers
 COPY ./apps-repository/ /usr/local/go/src/cg-edge-configurator/apps-repository
 COPY ./configurator/ /usr/local/go/src/cg-edge-configurator/configurator
