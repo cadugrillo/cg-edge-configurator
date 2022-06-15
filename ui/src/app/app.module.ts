@@ -27,12 +27,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
+import {MatSelectModule} from '@angular/material/select';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRepositoryComponent } from './app-repository/app-repository.component';
 import { UsersComponent } from './users/users.component';
 import { SystemComponent } from './system/system.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CgEdgeContainersService } from './cg-edge-containers.service';
+import { CgEdgeSystemService } from './cg-edge-system.service';
 
 @NgModule({
   declarations: [
@@ -66,9 +68,10 @@ import { CgEdgeContainersService } from './cg-edge-containers.service';
     MatTabsModule,
     MatListModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
   ],
-  providers: [CgEdgeConfigService, CgEdgeContainersService, {
+  providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

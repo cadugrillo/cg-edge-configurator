@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -104,7 +105,12 @@ func GetNetworkInfoHandler(c *gin.Context) {
 }
 
 func SetNetworkInfoHandler(c *gin.Context) {
-	c.JSON(http.StatusOK, system.SetNetworkInfo())
+	InterfaceSet, statusCode, err := convertHTTPBodyInterfaceSet(c.Request.Body)
+	if err != nil {
+		c.JSON(statusCode, err)
+		return
+	}
+	c.JSON(http.StatusOK, system.SetNetworkInfo(InterfaceSet))
 }
 
 func RestartHostHandler(c *gin.Context) {
@@ -153,4 +159,20 @@ func convertHTTPBodyAppTemplate(httpBody io.ReadCloser) (apps_repository.Templat
 		return apps_repository.Template{}, http.StatusBadRequest, err
 	}
 	return AppTemplate, http.StatusOK, nil
+}
+
+func convertHTTPBodyInterfaceSet(httpBody io.ReadCloser) (system.InterfaceSet, int, error) {
+	body, err := ioutil.ReadAll(httpBody)
+	if err != nil {
+		fmt.Println("error 1")
+		return system.InterfaceSet{}, http.StatusInternalServerError, err
+	}
+	defer httpBody.Close()
+	var InterfaceSet system.InterfaceSet
+	err = json.Unmarshal(body, &InterfaceSet)
+	if err != nil {
+		fmt.Println("error 2")
+		return system.InterfaceSet{}, http.StatusBadRequest, err
+	}
+	return InterfaceSet, http.StatusOK, nil
 }
