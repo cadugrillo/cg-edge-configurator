@@ -31,6 +31,6 @@ func SetNetworkInfo() *ni.InterfaceSet {
 
 func RestartHost() string {
 	syscall.Sync()
-	err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_POWER_OFF)
+	err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
 	return err.Error()
 }
