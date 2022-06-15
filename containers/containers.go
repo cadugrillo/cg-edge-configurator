@@ -188,3 +188,18 @@ func Logs(Id string) string {
 	//io.Copy(os.Stdout, out)
 	return "no text to show"
 }
+
+func GetDockerServerInfo() types.Info {
+	ctx := context.Background()
+	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
+	if err != nil {
+		panic(err)
+	}
+
+	info, err := cli.Info(ctx)
+	if err != nil {
+		panic(err)
+	}
+
+	return info
+}

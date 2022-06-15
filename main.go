@@ -25,16 +25,18 @@ func main() {
 
 	r.GET("/config/:appName", handlers.GetConfigHandler)
 	r.POST("/config/:appName", handlers.SetConfigHandler)
+	r.GET("/system/hostnetwork", handlers.GetNetworkInfoHandler)
+	r.POST("/system/hostnetwork", handlers.SetNetworkInfoHandler)
+	r.GET("/system/restart", handlers.RestartHostHandler)
 	r.GET("/containers/json", handlers.GetContainersHandler)
 	r.GET("/containers/repository", handlers.GetAppRepositoryHandler)
+	r.GET("/containers/info", handlers.GetDockerServerInfoHandler)
 	r.GET("/containers/:Id/logs", handlers.GetLogsHandler)
 	r.POST("/containers/install", handlers.InstallContainerHandler)
 	r.POST("/containers/:Id/start", handlers.StartContainerHandler)
 	r.POST("/containers/:Id/stop", handlers.StopContainerHandler)
 	r.POST("/containers/:Id/restart", handlers.RestartContainerHandler)
 	r.POST("/containers/:Id/remove", handlers.RemoveContainerHandler)
-	//r.DELETE("/config/:appName", handlers.DeleteConfigHandler)
-	//r.PUT("/config/:appName", handlers.PutConfigHandler)
 
 	httpPort := os.Getenv("HTTP_PORT")
 	if httpPort == "" {

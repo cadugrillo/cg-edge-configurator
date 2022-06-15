@@ -11,6 +11,7 @@ import (
 	opcuaconfig "cg-edge-configurator/apps/opcua-mqtt-connector/config"
 	"cg-edge-configurator/configurator"
 	"cg-edge-configurator/containers"
+	"cg-edge-configurator/system"
 
 	"github.com/gin-gonic/gin"
 )
@@ -91,6 +92,23 @@ func RemoveContainerHandler(c *gin.Context) {
 func GetLogsHandler(c *gin.Context) {
 	Id := c.Param("Id")
 	c.JSON(http.StatusOK, containers.Logs(Id))
+}
+
+func GetDockerServerInfoHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, containers.GetDockerServerInfo())
+}
+
+//////////////SYSTEM HANDLERS////////////////////
+func GetNetworkInfoHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, system.GetNetworkInfo())
+}
+
+func SetNetworkInfoHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, system.SetNetworkInfo())
+}
+
+func RestartHostHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, system.RestartHost())
 }
 
 ///////////////CONVERSIONs OF HTTP BODY TO SPECIFIC STRUCTURES////////////////////////////

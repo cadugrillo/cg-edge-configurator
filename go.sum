@@ -37,6 +37,8 @@ github.com/google/go-cmp v0.4.0/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/
 github.com/google/go-cmp v0.5.5 h1:Khx7svrCpmxxtHBq5j2mp/xVjsi8hQMfNLvJFAlrGgU=
 github.com/google/go-cmp v0.5.5/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/gofuzz v1.0.0/go.mod h1:dBl0BpW6vV/+mYPU4Po3pmUjxk6FQPldtuIdl/M65Eg=
+github.com/hilt0n/netif v0.0.0-20170412104928-eededdce9430 h1:HhTv1yHEouBpM5YHWL2NxnUORUfdEJnf+p1aFfw+/6k=
+github.com/hilt0n/netif v0.0.0-20170412104928-eededdce9430/go.mod h1:UpqyqhkW2cUkbS3O+T/FF4+mAWYHO9XhQ5uF2Xg1PCg=
 github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnrnM=
 github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHmT4TnhNGBo=
 github.com/kisielk/errcheck v1.5.0/go.mod h1:pFxgyoBC7bSaBwPgfKdkLd5X25qrDl4LWUI2bnpBCr8=
@@ -61,6 +63,10 @@ github.com/modern-go/reflect2 v1.0.2 h1:xBagoLtFs94CBntxluKeaWgTMpvLxC4ur3nMaC9G
 github.com/modern-go/reflect2 v1.0.2/go.mod h1:yWuevngMOJpCy52FWWMvUC8ws7m/LJsjYzDa0/r8luk=
 github.com/morikuni/aec v1.0.0 h1:nP9CBfwrvYnBRgY6qfDQkygYDmYwOilePFkwzv4dU8A=
 github.com/morikuni/aec v1.0.0/go.mod h1:BbKIizmSmc5MMPqRYbxO4ZU0S0+P200+tUnFx7PXmsc=
+github.com/n-marshall/fn v0.0.0-20170411202714-726fd988d1cf h1:h1lQldkVJ43NZvfp/rrgaifvuuxvbXMK8c6lKKv+jew=
+github.com/n-marshall/fn v0.0.0-20170411202714-726fd988d1cf/go.mod h1:uum+r02VElzMlngOgS9EdjrsNLfr25BCRX79i+Zve6I=
+github.com/n-marshall/go-cp v0.0.0-20180115193924-61436d3b7cfa h1:cHWBhAbWYxzxHdl1kD41n4LPuydyoIHOOo82qqRsP4g=
+github.com/n-marshall/go-cp v0.0.0-20180115193924-61436d3b7cfa/go.mod h1:slbibx0cm0aSgmu1NaJdSAZiLmKMGQb2uK1hNNdTZr0=
 github.com/opencontainers/go-digest v1.0.0 h1:apOUWs51W5PlhuyGyz9FCeeBIOUDA/6nW8Oi/yOhh5U=
 github.com/opencontainers/go-digest v1.0.0/go.mod h1:0JzlMkj0TRzQZfJkVvzbP0HBR3IKzErnv2BNG4W4MAM=
 github.com/opencontainers/image-spec v1.0.2 h1:9yCKha/T5XdGtO0q9Q9a6T5NUCsTn/DrBg0D7ufOcFM=

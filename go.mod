@@ -6,6 +6,7 @@ require github.com/gin-gonic/gin v1.8.0
 
 require (
 	github.com/docker/go-connections v0.4.0
+	github.com/hilt0n/netif v0.0.0-20170412104928-eededdce9430
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -16,6 +17,8 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/moby/term v0.0.0-20210619224110-3f7ff695adc6 // indirect
 	github.com/morikuni/aec v1.0.0 // indirect
+	github.com/n-marshall/fn v0.0.0-20170411202714-726fd988d1cf // indirect
+	github.com/n-marshall/go-cp v0.0.0-20180115193924-61436d3b7cfa // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.0.2 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
