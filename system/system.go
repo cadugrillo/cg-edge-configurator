@@ -31,6 +31,6 @@ func SetNetworkInfo() *ni.InterfaceSet {
 
 func RestartHost() string {
 	syscall.Sync()
-	syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
-	return "Shutdown in progress"
+	err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_POWER_OFF)
+	return err.Error()
 }
