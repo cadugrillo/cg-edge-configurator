@@ -29,6 +29,8 @@ func SetNetworkInfo() *ni.InterfaceSet {
 	return is
 }
 
-func RestartHost() error {
-	return syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
+func RestartHost() string {
+	syscall.Sync()
+	syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
+	return "Shutdown in progress"
 }
