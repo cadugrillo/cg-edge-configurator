@@ -40,6 +40,10 @@ export class CgEdgeContainersService {
   getContainersRepo() {
     return this.httpClient.get(environment.gateway + '/containers/repository');
   }
+
+  getDockerServerInfo() {
+    return this.httpClient.get(environment.gateway + '/containers/info');
+  }
 }
 
 export class Container {
