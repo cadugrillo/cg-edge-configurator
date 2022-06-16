@@ -1,7 +1,7 @@
 package system
 
 import (
-	"syscall"
+	"net"
 
 	ni "github.com/hilt0n/netif"
 )
@@ -13,7 +13,7 @@ type InterfaceSet struct {
 
 type Adapter struct {
 	AddrFamily int    `json:"AddrFamily"`
-	AddrSource string `json:"AddrSource"`
+	AddrSource int    `json:"AddrSource"`
 	Address    string `json:"Address"`
 	Auto       bool   `json:"Auto"`
 	Broadcast  string `json:"Broadcast"`
@@ -29,36 +29,37 @@ func GetNetworkInfo() *ni.InterfaceSet {
 	return is
 }
 
-func SetNetworkInfo(InterfaceSet InterfaceSet) *ni.InterfaceSet {
+func SetNetworkInfo(InterfaceSet InterfaceSet) string {
 
 	is := ni.Parse(ni.Path("/etc/network/interfacess"))
-	//is.Adapters[1].AddrSource = 1 //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
-	//is.Adapters[1].Address = net.IPv4(192, 168, 0, 103)
-	//is.Adapters[1].Netmask = net.IPv4(255, 255, 255, 0)
-	//is.Adapters[1].Gateway = net.IPv4(0, 0, 0, 0)
 
-	switch InterfaceSet.Adapters[2].AddrSource {
-	case "1":
-		is.Adapters[2].AddrSource = ni.DHCP //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
-	case "2":
-		is.Adapters[2].AddrSource = ni.STATIC //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
-	case "3":
-		is.Adapters[2].AddrSource = ni.LOOPBACK //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
-	case "4":
-		is.Adapters[2].AddrSource = ni.MANUAL //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
+	for i := 0; i < len(is.Adapters); i++ {
+
+		switch InterfaceSet.Adapters[i].AddrSource {
+		case 1:
+			is.Adapters[i].AddrSource = ni.DHCP //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
+		case 2:
+			is.Adapters[i].AddrSource = ni.STATIC //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
+		case 3:
+			is.Adapters[i].AddrSource = ni.LOOPBACK //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
+		case 4:
+			is.Adapters[i].AddrSource = ni.MANUAL //{1 - "dhcp", 2 - "static", 3 - "loopback", 4 - "manual"}
+		}
+
+		is.Adapters[i].Address = net.ParseIP(InterfaceSet.Adapters[i].Address)
+		is.Adapters[i].Netmask = net.ParseIP(InterfaceSet.Adapters[i].Netmask)
+		is.Adapters[i].Gateway = net.ParseIP(InterfaceSet.Adapters[i].Gateway)
+
 	}
 
-	//is.Adapters[2].Address = net.IPv4(172, 24, 50, 114)
-	//is.Adapters[2].Netmask = net.IPv4(255, 255, 255, 0)
-	//is.Adapters[2].Gateway = net.IPv4(0, 0, 0, 0)
-
 	is.Write(ni.Path("/etc/network/interfacess"))
-	return is
+	return "Network Settings updated successfully! (You should restart the system to apply new settings)"
 
 }
 
 func RestartHost() string {
-	syscall.Sync()
-	err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
-	return err.Error()
+	//syscall.Sync()
+	//err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
+	//return err.Error()
+	return ""
 }

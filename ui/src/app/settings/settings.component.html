@@ -16,24 +16,23 @@
         <mat-card-content>
             <mat-form-field appearance="fill">
                 <mat-label>Type</mat-label>
-                <select matNativeControl required [(ngModel)]="Adapter.AddrSource">
-                  <option value= 1>DHCP</option>
-                  <option value= 2 >STATIC</option>
-                  <option value= 3 >LOOPBACK</option>
-                  <option value= 4 >MANUAL</option>
-                </select>
+                <mat-select [(ngModel)]="Adapter.AddrSource">
+                  <mat-option *ngFor="let Source of Sources" [value]="Source.value">
+                    {{Source.viewValue}}
+                  </mat-option>
+                </mat-select>
               </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill" *ngIf="Adapter.AddrSource != 1">
                 <mat-label>IP Address</mat-label>
-                <input matInput placeholder="client ID" [(ngModel)]="Adapter.Address">
+                <input matInput placeholder="192.168.0.10" [(ngModel)]="Adapter.Address">
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill" *ngIf="Adapter.AddrSource != 1">
                 <mat-label>Mask</mat-label>
-                <input matInput placeholder="client ID" [(ngModel)]="Adapter.Netmask">
+                <input matInput placeholder="255.255.255.0" [(ngModel)]="Adapter.Netmask">
             </mat-form-field>
             <mat-form-field class="example-full-width" appearance="fill" *ngIf="Adapter.AddrSource != 1">
                 <mat-label>Gateway</mat-label>
-                <input matInput placeholder="client ID" [(ngModel)]="Adapter.Gateway">
+                <input matInput placeholder="192.168.0.1" [(ngModel)]="Adapter.Gateway">
             </mat-form-field>
         </mat-card-content>
         <mat-card-actions align="end">
