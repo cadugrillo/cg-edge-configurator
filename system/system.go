@@ -2,6 +2,7 @@ package system
 
 import (
 	"net"
+	"syscall"
 
 	ni "github.com/hilt0n/netif"
 )
@@ -25,13 +26,13 @@ type Adapter struct {
 }
 
 func GetNetworkInfo() *ni.InterfaceSet {
-	is := ni.Parse(ni.Path("/etc/network/interfacess"))
+	is := ni.Parse(ni.Path("/etc/network/interfaces"))
 	return is
 }
 
 func SetNetworkInfo(InterfaceSet InterfaceSet) string {
 
-	is := ni.Parse(ni.Path("/etc/network/interfacess"))
+	is := ni.Parse(ni.Path("/etc/network/interfaces"))
 
 	for i := 0; i < len(is.Adapters); i++ {
 
@@ -52,14 +53,13 @@ func SetNetworkInfo(InterfaceSet InterfaceSet) string {
 
 	}
 
-	is.Write(ni.Path("/etc/network/interfacess"))
+	is.Write(ni.Path("/etc/network/interfaces"))
 	return "Network Settings updated successfully! (You should restart the system to apply new settings)"
 
 }
 
 func RestartHost() string {
-	//syscall.Sync()
-	//err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
-	//return err.Error()
-	return ""
+	syscall.Sync()
+	err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
+	return err.Error()
 }

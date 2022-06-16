@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CgEdgeContainersService, Container } from '../cg-edge-containers.service';
+import { CgEdgeContainersService, SystemInfo } from '../cg-edge-containers.service';
 
 @Component({
   selector: 'app-system',
@@ -7,6 +7,8 @@ import { CgEdgeContainersService, Container } from '../cg-edge-containers.servic
   styleUrls: ['./system.component.css']
 })
 export class SystemComponent implements OnInit {
+
+  SystemInfo: SystemInfo = new SystemInfo();
 
   constructor(private CgEdgeContainerService: CgEdgeContainersService) { }
 
@@ -16,7 +18,7 @@ export class SystemComponent implements OnInit {
 
   getDockerServerInfo() {
     this.CgEdgeContainerService.getDockerServerInfo().subscribe((data) => {
-      console.log(data)
+      this.SystemInfo = (data as SystemInfo);
     });
   }
 }

@@ -28,6 +28,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRepositoryComponent } from './app-repository/app-repository.component';
 import { UsersComponent } from './users/users.component';
@@ -35,6 +36,7 @@ import { SystemComponent } from './system/system.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CgEdgeContainersService } from './cg-edge-containers.service';
 import { CgEdgeSystemService } from './cg-edge-system.service';
+import { WaitPopupComponent } from './wait-popup/wait-popup.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,7 @@ import { CgEdgeSystemService } from './cg-edge-system.service';
     UsersComponent,
     SystemComponent,
     SettingsComponent,
+    WaitPopupComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -69,7 +72,8 @@ import { CgEdgeSystemService } from './cg-edge-system.service';
     MatListModule,
     MatCardModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, {
     provide: HTTP_INTERCEPTORS,

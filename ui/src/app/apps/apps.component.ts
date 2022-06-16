@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CgEdgeContainersService, Container } from '../cg-edge-containers.service';
 import {MatDialog} from '@angular/material/dialog';
-import { MessagePopupComponent} from '../message-popup/message-popup.component';
+import { MessagePopupComponent } from '../message-popup/message-popup.component';
+import { WaitPopupComponent } from '../wait-popup/wait-popup.component';
+import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-home',
@@ -54,9 +56,10 @@ export class AppsComponent implements OnInit {
   }
 
   GetContainerLogs(Id: string) {
+    this.dialog.open(WaitPopupComponent, {});
     this.CgEdgeContainerService.getContainersLogs(Id).subscribe((data) =>{
-      this.dialog.open(MessagePopupComponent, {data: {title: "App Logs", text: data as string}});
-      //console.log(data)
+      this.dialog.closeAll();
+      return saveAs(new Blob([data as string], { type: 'TXT' }), 'logs.txt');
     });
   }
 

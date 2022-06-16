@@ -1,0 +1,25 @@
+.system {
+    padding: 30px;
+    display: inline-grid;
+    grid-template-columns: 430px 430px;
+  }
+  
+  .example-card {
+    width: 400px;
+    max-height: 400px;
+    margin-bottom: 80px;
+    background-color: rgb(245, 245, 248);
+  }
+
+  .warning {
+    padding: 30px;
+    display: inline-grid;
+    grid-template-columns: 860px;
+  }
+  
+  .warning-card {
+    width: 800px;
+    max-height: 50px;
+    margin-bottom: 5px;
+    background-color: rgb(247, 229, 221);
+  }

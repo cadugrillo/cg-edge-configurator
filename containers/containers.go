@@ -38,9 +38,6 @@ func GetContainers() []types.Container {
 		panic(err)
 	}
 
-	for _, container := range containers {
-		fmt.Println(container.ID)
-	}
 	return containers
 }
 

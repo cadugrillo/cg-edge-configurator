@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CgEdgeContainersService, ContainersRepo, Template } from '../cg-edge-containers.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent} from '../message-popup/message-popup.component';
+import { WaitPopupComponent } from '../wait-popup/wait-popup.component';
 
 @Component({
   selector: 'app-app-repository',
@@ -26,7 +27,9 @@ export class AppRepositoryComponent implements OnInit {
   }
 
   installContainer(AppTemplate: Template) {
+    this.dialog.open(WaitPopupComponent, {});
     this.CgEdgeContainerService.installContainer(AppTemplate).subscribe((data) => {
+      this.dialog.closeAll();
       this.dialog.open(MessagePopupComponent, {data: {title: "App Installation", text: data}});
     });
   }

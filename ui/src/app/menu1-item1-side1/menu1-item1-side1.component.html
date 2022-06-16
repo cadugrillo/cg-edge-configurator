@@ -1,3 +1,6 @@
+<mat-toolbar>
+  <span></span>
+</mat-toolbar>
 <mat-selection-list color="primary" #options [multiple]="false">
     <mat-list-option *ngFor="let option of typesOfOption" [value]="option" routerLink="{{option}}">
       {{option}}

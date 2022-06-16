@@ -93,3 +93,54 @@ export class Template {
 	ports!: string[]
 	volumes!: string[]
 }
+
+export class SystemInfo {
+  Architecture!: string
+  BridgeNfIp6tables!: boolean
+  BridgeNfIptables!: boolean
+  CPUSet!: boolean
+  CPUShares!: boolean
+  CgroupDriver!: string
+  CgroupVersion!: string
+  Containers!: number
+  ContainersPaused!: number
+  ContainersRunning!: number
+  ContainersStopped!: number
+  CpuCfsPeriod!: boolean
+  CpuCfsQuota!: boolean
+  Debug!: boolean
+  DefaultRuntime!: string
+  DockerRootDir!: string
+  Driver!: string
+  ExperimentalBuild!: boolean
+  HttpProxy!: string
+  HttpsProxy!: string
+  ID!: string
+  IPv4Forwarding!: boolean
+  Images!: number
+  IndexServerAddress!: string
+  InitBinary!: string
+  Isolation!: string
+  KernelMemory!: boolean
+  KernelMemoryTCP!: boolean
+  KernelVersion!: string
+  LiveRestoreEnabled!: boolean
+  LoggingDriver!: string
+  MemTotal!: number
+  MemoryLimit!: boolean
+  NCPU!: number
+  NEventsListener!: number
+  NFd!: number
+  NGoroutines!: number
+  Name!: string
+  NoProxy!: string
+  OSType!: string
+  OSVersion!: string
+  OomKillDisable!: boolean
+  OperatingSystem!: string
+  PidsLimit!: boolean
+  ServerVersion!: string
+  SwapLimit!: boolean
+  SystemTime!: string
+  Warnings!: string[]
+}
