@@ -60,7 +60,7 @@ func SetNetworkInfo(InterfaceSet InterfaceSet) string {
 
 func RestartHost() string {
 
-	url := "https://localhost:4383/host/restart"
+	url := "http://localhost:4383/host/restart"
 
 	req, _ := http.NewRequest("POST", url, nil)
 
@@ -73,7 +73,7 @@ func RestartHost() string {
 
 func ShutDownHost() string {
 
-	url := "https://localhost:4383/host/shutdown"
+	url := "http://localhost:4383/host/shutdown"
 
 	req, _ := http.NewRequest("POST", url, nil)
 
