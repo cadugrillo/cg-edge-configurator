@@ -117,6 +117,10 @@ func RestartHostHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, system.RestartHost())
 }
 
+func ShutDownHostHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, system.ShutDownHost())
+}
+
 ///////////////CONVERSIONs OF HTTP BODY TO SPECIFIC STRUCTURES////////////////////////////
 
 func convertHTTPBodyMccConfig(httpBody io.ReadCloser) (mqttcloudconfig.Config, int, error) {

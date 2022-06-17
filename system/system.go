@@ -2,7 +2,7 @@ package system
 
 import (
 	"net"
-	"syscall"
+	"net/http"
 
 	ni "github.com/hilt0n/netif"
 )
@@ -59,7 +59,27 @@ func SetNetworkInfo(InterfaceSet InterfaceSet) string {
 }
 
 func RestartHost() string {
-	syscall.Sync()
-	err := syscall.Reboot(syscall.LINUX_REBOOT_CMD_RESTART)
-	return err.Error()
+
+	url := "https://localhost:4383/host/restart"
+
+	req, _ := http.NewRequest("POST", url, nil)
+
+	_, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return err.Error()
+	}
+	return ""
+}
+
+func ShutDownHost() string {
+
+	url := "https://localhost:4383/host/shutdown"
+
+	req, _ := http.NewRequest("POST", url, nil)
+
+	_, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return err.Error()
+	}
+	return ""
 }

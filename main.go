@@ -28,6 +28,7 @@ func main() {
 	r.GET("/system/hostnetwork", handlers.GetNetworkInfoHandler)
 	r.POST("/system/hostnetwork", handlers.SetNetworkInfoHandler)
 	r.POST("/system/restart", handlers.RestartHostHandler)
+	r.POST("/system/shutdown", handlers.ShutDownHostHandler)
 	r.GET("/containers/json", handlers.GetContainersHandler)
 	r.GET("/containers/repository", handlers.GetAppRepositoryHandler)
 	r.GET("/containers/info", handlers.GetDockerServerInfoHandler)
