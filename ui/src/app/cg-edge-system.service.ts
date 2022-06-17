@@ -16,6 +16,15 @@ export class CgEdgeSystemService {
   setHostNetwork(InterfaceSet: InterfaceSet) {
     return this.httpClient.post(environment.gateway + '/system/hostnetwork', InterfaceSet);
   }
+
+  restartHostSystem() {
+    return this.httpClient.post(environment.gateway + '/system/restart', '');
+  }
+
+  shutdownHostSystem() {
+    return this.httpClient.post(environment.gateway + '/system/shutdown', '');
+  }
+
 }
 
 export class InterfaceSet {

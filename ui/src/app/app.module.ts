@@ -37,6 +37,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { CgEdgeContainersService } from './cg-edge-containers.service';
 import { CgEdgeSystemService } from './cg-edge-system.service';
 import { WaitPopupComponent } from './wait-popup/wait-popup.component';
+import { SysRestartPopupComponent } from './sys-restart-popup/sys-restart-popup.component';
+import { SysShutdownPopupComponent } from './sys-shutdown-popup/sys-shutdown-popup.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { WaitPopupComponent } from './wait-popup/wait-popup.component';
     SystemComponent,
     SettingsComponent,
     WaitPopupComponent,
+    SysRestartPopupComponent,
+    SysShutdownPopupComponent,
   ],
   imports: [
     AppRoutingModule,

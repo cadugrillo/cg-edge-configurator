@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Menu1Item1Side1Component implements OnInit {
 
-  typesOfOption: string[] = ['Dashboard', 'Apps', 'App-Repository', 'Users','System', 'Settings'];
+  typesOfOption: string[] = ['Dashboard', 'Apps', 'App-Repository', 'Users','Settings', 'System'];
 
   constructor() { }
 
