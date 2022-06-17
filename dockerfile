@@ -28,14 +28,14 @@ RUN ls /
 
 #Step 2 - Build a small image
 
-#FROM scratch
-FROM golang:1.16-alpine
+FROM scratch
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /cgEdgeConfApi /cgEdgeConfApi
 COPY --from=builder /apps /apps
 
 EXPOSE 4343
+EXPOSE 4383
 
 CMD [ "/cgEdgeConfApi" ]
 
