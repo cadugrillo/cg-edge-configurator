@@ -7,6 +7,8 @@ import { environment } from '../environments/environment';
 })
 export class CgEdgeUsersService {
 
+  Authenticated!: boolean 
+
   constructor(private httpClient: HttpClient) {}
 
   getUsers() {
@@ -24,7 +26,21 @@ export class CgEdgeUsersService {
   deleteUser(Id: string) {
     return this.httpClient.post(environment.gateway + '/users/'+ Id, "");
   }
+
+  login() {
+    this.Authenticated = true
+
+  }
+
+  logout() {
+    this.Authenticated = false
+  }
+
+  isAuthenticated() {
+    return true
+  }
 }
+
 
 export class Users {
   Users!: User[]

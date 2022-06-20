@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CgEdgeUsersService } from '../cg-edge-users.service'
 
 @Component({
   selector: 'menu1-item1-side1',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Menu1Item1Side1Component implements OnInit {
 
-  typesOfOption: string[] = ['Dashboard', 'Apps', 'App-Repository', 'Users','Settings', 'System'];
+  isAuthenticated!: boolean;
 
-  constructor() { }
+  constructor(private CgEdgeUsersService: CgEdgeUsersService) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.CgEdgeUsersService.isAuthenticated()
   }
 
 }

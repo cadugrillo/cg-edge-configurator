@@ -2,7 +2,11 @@
   <span></span>
 </mat-toolbar>
 <mat-selection-list color="primary" #options [multiple]="false">
-    <mat-list-option *ngFor="let option of typesOfOption" [value]="option" routerLink="{{option}}">
-      {{option}}
-    </mat-list-option>
+    <mat-list-option *ngIf="isAuthenticated" routerLink="Dashboard">Dashboard</mat-list-option>
+    <mat-list-option *ngIf="isAuthenticated" routerLink="Apps">Apps</mat-list-option>
+    <mat-list-option *ngIf="isAuthenticated" routerLink="App-Repository">App Repository</mat-list-option>
+    <mat-list-option *ngIf="isAuthenticated" routerLink="Images">Images</mat-list-option>
+    <mat-list-option *ngIf="isAuthenticated" routerLink="Settings">Settings</mat-list-option>
+    <mat-list-option *ngIf="isAuthenticated" routerLink="Users">Users</mat-list-option>
+    <mat-list-option *ngIf="isAuthenticated" routerLink="System">System</mat-list-option>
   </mat-selection-list>
