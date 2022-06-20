@@ -37,7 +37,7 @@ export class CgEdgeUsersService {
   }
 
   isAuthenticated() {
-    return true
+    return this.Authenticated
   }
 }
 
@@ -46,7 +46,7 @@ export class Users {
   Users!: User[]
 }
 
-class User {
+export class User {
   ID!: string
   Username!: string
   Password!: string
