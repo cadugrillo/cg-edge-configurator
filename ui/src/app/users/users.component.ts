@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CgEdgeUsersService, Users } from '../cg-edge-users.service';
+import {MatDialog} from '@angular/material/dialog';
+import { MessagePopupComponent } from '../message-popup/message-popup.component';
 
 @Component({
   selector: 'app-users',
@@ -7,9 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  Users!: Users
+
+  constructor(private CgEdgeUsersService: CgEdgeUsersService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.getUsers();
+  }
+
+  getUsers() {
+    this.CgEdgeUsersService.getUsers().subscribe((data) => {
+      this.Users = (data as Users);
+    });
+  }
+
+  updateUsers() {
+    this.CgEdgeUsersService.updateUsers(this.Users).subscribe((data) => {
+      this.dialog.open(MessagePopupComponent, {data: {title: "Update Users", text: data}});
+      this.getUsers();
+    });
+  }
+
+  addUser() {
+    this.CgEdgeUsersService.addUser().subscribe((data) => {
+      this.dialog.open(MessagePopupComponent, {data: {title: "Add User", text: data}});
+      this.getUsers();
+    });
+  }
+
+  deleteUser(Id: string) {
+    this.CgEdgeUsersService.deleteUser(Id).subscribe((data) => {
+      this.dialog.open(MessagePopupComponent, {data: {title: "Delete User", text: data}});
+      this.getUsers();
+    });
   }
 
 }

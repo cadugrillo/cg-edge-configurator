@@ -39,6 +39,7 @@ import { CgEdgeSystemService } from './cg-edge-system.service';
 import { WaitPopupComponent } from './wait-popup/wait-popup.component';
 import { SysRestartPopupComponent } from './sys-restart-popup/sys-restart-popup.component';
 import { SysShutdownPopupComponent } from './sys-shutdown-popup/sys-shutdown-popup.component';
+import { CgEdgeUsersService } from './cg-edge-users.service';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,7 @@ import { SysShutdownPopupComponent } from './sys-shutdown-popup/sys-shutdown-pop
     MatSelectModule,
     MatProgressSpinnerModule
   ],
-  providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, {
+  providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, CgEdgeUsersService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

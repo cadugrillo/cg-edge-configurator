@@ -25,6 +25,10 @@ func main() {
 
 	r.GET("/config/:appName", handlers.GetConfigHandler)
 	r.POST("/config/:appName", handlers.SetConfigHandler)
+	r.GET("/users/json", handlers.GetUsersHandler)
+	r.POST("/users/json", handlers.UpdateUsersHandler)
+	r.GET("/users/add", handlers.AddUserHandler)
+	r.POST("/users/:Id", handlers.DeleteUserHandler)
 	r.GET("/system/hostnetwork", handlers.GetNetworkInfoHandler)
 	r.POST("/system/hostnetwork", handlers.SetNetworkInfoHandler)
 	r.POST("/system/restart", handlers.RestartHostHandler)

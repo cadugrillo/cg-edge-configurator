@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -13,6 +12,7 @@ import (
 	"cg-edge-configurator/configurator"
 	"cg-edge-configurator/containers"
 	"cg-edge-configurator/system"
+	"cg-edge-configurator/users"
 
 	"github.com/gin-gonic/gin"
 )
@@ -99,6 +99,29 @@ func GetDockerServerInfoHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, containers.GetDockerServerInfo())
 }
 
+//////////////USERS HANDLERS/////////////////////
+func GetUsersHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, users.GetUsers())
+}
+
+func UpdateUsersHandler(c *gin.Context) {
+	Users, statusCode, err := convertHTTPBodyUsers(c.Request.Body)
+	if err != nil {
+		c.JSON(statusCode, err)
+		return
+	}
+	c.JSON(http.StatusOK, users.UpdateUsers(Users))
+}
+
+func AddUserHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, users.AddUser())
+}
+
+func DeleteUserHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, users.DeleteUser(Id))
+}
+
 //////////////SYSTEM HANDLERS////////////////////
 func GetNetworkInfoHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, system.GetNetworkInfo())
@@ -168,15 +191,27 @@ func convertHTTPBodyAppTemplate(httpBody io.ReadCloser) (apps_repository.Templat
 func convertHTTPBodyInterfaceSet(httpBody io.ReadCloser) (system.InterfaceSet, int, error) {
 	body, err := ioutil.ReadAll(httpBody)
 	if err != nil {
-		fmt.Println("error 1")
 		return system.InterfaceSet{}, http.StatusInternalServerError, err
 	}
 	defer httpBody.Close()
 	var InterfaceSet system.InterfaceSet
 	err = json.Unmarshal(body, &InterfaceSet)
 	if err != nil {
-		fmt.Println("error 2")
 		return system.InterfaceSet{}, http.StatusBadRequest, err
 	}
 	return InterfaceSet, http.StatusOK, nil
+}
+
+func convertHTTPBodyUsers(httpBody io.ReadCloser) (users.Users, int, error) {
+	body, err := ioutil.ReadAll(httpBody)
+	if err != nil {
+		return users.Users{}, http.StatusInternalServerError, err
+	}
+	defer httpBody.Close()
+	var Users users.Users
+	err = json.Unmarshal(body, &Users)
+	if err != nil {
+		return users.Users{}, http.StatusBadRequest, err
+	}
+	return Users, http.StatusOK, nil
 }
