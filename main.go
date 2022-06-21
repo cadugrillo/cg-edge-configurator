@@ -43,6 +43,8 @@ func main() {
 	r.POST("/containers/:Id/stop", handlers.StopContainerHandler)
 	r.POST("/containers/:Id/restart", handlers.RestartContainerHandler)
 	r.POST("/containers/:Id/remove", handlers.RemoveContainerHandler)
+	r.GET("/images/json", handlers.GetImagesHandler)
+	r.POST("/images/:Id/remove", handlers.RemoveImageHandler)
 
 	httpPort := os.Getenv("HTTP_PORT")
 	if httpPort == "" {

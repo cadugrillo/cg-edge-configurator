@@ -11,6 +11,7 @@ import (
 	opcuaconfig "cg-edge-configurator/apps/opcua-mqtt-connector/config"
 	"cg-edge-configurator/configurator"
 	"cg-edge-configurator/containers"
+	"cg-edge-configurator/images"
 	"cg-edge-configurator/system"
 	"cg-edge-configurator/users"
 
@@ -97,6 +98,16 @@ func GetLogsHandler(c *gin.Context) {
 
 func GetDockerServerInfoHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, containers.GetDockerServerInfo())
+}
+
+/////////////IMAGES HANDLERS////////////////////
+func GetImagesHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, images.GetImages())
+}
+
+func RemoveImageHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, images.RemoveImage(Id))
 }
 
 //////////////USERS HANDLERS/////////////////////

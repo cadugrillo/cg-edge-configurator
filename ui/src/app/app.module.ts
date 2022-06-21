@@ -43,6 +43,7 @@ import { CgEdgeUsersService } from './cg-edge-users.service';
 import { LoginComponent } from './login/login.component';
 import { ImagesComponent } from './images/images.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CgEdgeImagesService } from './cg-edge-images.service';
 
 
 @NgModule({
@@ -87,7 +88,7 @@ import { ProfileComponent } from './profile/profile.component';
     MatSelectModule,
     MatProgressSpinnerModule
   ],
-  providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, CgEdgeUsersService,{
+  providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, CgEdgeUsersService,CgEdgeImagesService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
