@@ -94,3 +94,20 @@ func DeleteUser(Id string) string {
 
 	return "Could not find user based on current ID"
 }
+
+func Validate(User User) User {
+
+	none := User
+	none.Username = "invalid"
+
+	Users := GetUsers()
+	for i := 0; i < len(Users.Users); i++ {
+		if User.Username == Users.Users[i].Username {
+			if User.Password == Users.Users[i].Password {
+				Users.Users[i].Password = ""
+				return Users.Users[i]
+			}
+		}
+	}
+	return none
+}

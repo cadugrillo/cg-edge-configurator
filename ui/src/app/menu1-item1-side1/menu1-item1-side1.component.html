@@ -1,12 +1,12 @@
 <mat-toolbar>
   <span></span>
 </mat-toolbar>
-<mat-selection-list color="primary" #options [multiple]="false">
-    <mat-list-option *ngIf="isAuthenticated()" routerLink="Dashboard">Dashboard</mat-list-option>
-    <mat-list-option *ngIf="isAuthenticated()" routerLink="Apps">Apps</mat-list-option>
-    <mat-list-option *ngIf="isAuthenticated()" routerLink="App-Repository">App Repository</mat-list-option>
-    <mat-list-option *ngIf="isAuthenticated()" routerLink="Images">Images</mat-list-option>
-    <mat-list-option *ngIf="isAuthenticated()" routerLink="Settings">Settings</mat-list-option>
-    <mat-list-option *ngIf="isAuthenticated()" routerLink="Users">Users</mat-list-option>
-    <mat-list-option *ngIf="isAuthenticated()" routerLink="System">System</mat-list-option>
+<mat-selection-list color="primary" *ngIf="isAuthenticated()" #options [multiple]="false">
+    <mat-list-option routerLink="Dashboard">Dashboard</mat-list-option>
+    <mat-list-option [disabled]="AppsMenuDisabled()" routerLink="Apps">Apps</mat-list-option>
+    <mat-list-option [disabled]="AppsRepMenuDisabled()" routerLink="App-Repository">App Repository</mat-list-option>
+    <mat-list-option [disabled]="ImagesMenuDisabled()" routerLink="Images">Images</mat-list-option>
+    <mat-list-option [disabled]="SettingsMenuDisabled()" routerLink="Settings">Settings</mat-list-option>
+    <mat-list-option [disabled]="UsersMenuDisabled()" routerLink="Users">Users</mat-list-option>
+    <mat-list-option [disabled]="SystemMenuDisabled()" routerLink="System">System</mat-list-option>
   </mat-selection-list>

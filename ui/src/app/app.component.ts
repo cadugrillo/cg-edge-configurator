@@ -15,11 +15,11 @@ export class AppComponent {
 
   constructor(private CgEdgeUsersService: CgEdgeUsersService,
               private router: Router) {
-    
+  
   }
 
   public ngOnInit(): void {
-    this.logout();
+  
   }
 
   logout() {
@@ -31,3 +31,4 @@ export class AppComponent {
     return this.CgEdgeUsersService.isAuthenticated();
   }
 }
+

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CgEdgeUsersService } from '../cg-edge-users.service'
+import { CgEdgeUsersService, User } from '../cg-edge-users.service'
 
 @Component({
   selector: 'menu1-item1-side1',
@@ -8,15 +8,39 @@ import { CgEdgeUsersService } from '../cg-edge-users.service'
 })
 export class Menu1Item1Side1Component implements OnInit {
 
+  currentUser!: User
 
-  constructor(private CgEdgeUsersService: CgEdgeUsersService) { }
+  constructor(private CgEdgeUsersService: CgEdgeUsersService) {}
 
   ngOnInit(): void {
     
   }
 
   isAuthenticated() {
-    return this.CgEdgeUsersService.isAuthenticated()
+    return this.CgEdgeUsersService.isAuthenticated();
   }
 
+  AppsMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.Apps
+  }
+
+  AppsRepMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.AppsRepository
+  }
+
+  ImagesMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.Images
+  }
+
+  SettingsMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.Settings
+  }
+
+  UsersMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.Users
+  }
+
+  SystemMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.System
+  }
 }

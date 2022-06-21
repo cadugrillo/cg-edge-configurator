@@ -29,6 +29,7 @@ func main() {
 	r.POST("/users/json", handlers.UpdateUsersHandler)
 	r.GET("/users/add", handlers.AddUserHandler)
 	r.POST("/users/:Id", handlers.DeleteUserHandler)
+	r.POST("/users/validate", handlers.ValidateUserHandler)
 	r.GET("/system/hostnetwork", handlers.GetNetworkInfoHandler)
 	r.POST("/system/hostnetwork", handlers.SetNetworkInfoHandler)
 	r.POST("/system/restart", handlers.RestartHostHandler)

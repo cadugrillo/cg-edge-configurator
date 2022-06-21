@@ -42,6 +42,8 @@ import { SysShutdownPopupComponent } from './sys-shutdown-popup/sys-shutdown-pop
 import { CgEdgeUsersService } from './cg-edge-users.service';
 import { LoginComponent } from './login/login.component';
 import { ImagesComponent } from './images/images.component';
+import { ProfileComponent } from './profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { ImagesComponent } from './images/images.component';
     SysShutdownPopupComponent,
     LoginComponent,
     ImagesComponent,
+    ProfileComponent,
   ],
   imports: [
     AppRoutingModule,

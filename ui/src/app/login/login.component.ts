@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   User: User = new User();
+  
 
   constructor(private CgEdgeUsersService: CgEdgeUsersService,
               private router: Router) { }
@@ -18,10 +19,14 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login(User: User) {
-    this.CgEdgeUsersService.login(User).then(() => {
+  login() {
+    
+    // this.CgEdgeUsersService.Login(this.User).then(() => {
+    //   this.router.navigate(['/Dashboard']);
+    // }); 
+    this.CgEdgeUsersService.Login(this.User).subscribe((data) => {
       this.router.navigate(['/Dashboard']);
-    });
+    })
     
   }
 }

@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CgEdgeUsersService {
 
-  Authenticated!: boolean 
+  CurrentUser!: User
   private authenticationSubject: BehaviorSubject<any>;
 
   constructor(private httpClient: HttpClient) {
@@ -32,21 +32,43 @@ export class CgEdgeUsersService {
     return this.httpClient.post(environment.gateway + '/users/'+ Id, "");
   }
 
-  login(User: User): Promise<boolean> {
-    this.authenticationSubject.next(true);
-    
-    return Promise.resolve(true);
+  validateUser(User: User) {
+    return this.httpClient.post(environment.gateway + '/users/validate', User);
   }
 
+  Login(User: User): Observable<any> {
+    var subject = new Subject<any>();
+    this.validateUser(User).subscribe((data) => {
+        this.CurrentUser = data as User;
+        if (this.CurrentUser.Username == "invalid" || this.CurrentUser.Username == "") {
+          console.log("invalid or empty");
+          this.authenticationSubject.next(false);
+          subject.next(this.authenticationSubject.value);
+        } else {
+          console.log("valid");
+          this.authenticationSubject.next(true);
+          subject.next(this.authenticationSubject.value);
+        }  
+    });
+    return subject.asObservable();
+  }
+
+
   logout() {
+    this.CurrentUser = {} as User
     this.authenticationSubject.next(false);
   }
 
-  isAuthenticated() {
-    return this.authenticationSubject.value;
-}
-}
+  isAuthenticated(): boolean {
+    return this.authenticationSubject.value
+  }
 
+  getCurrentUser(): User {
+    return this.CurrentUser;
+  }
+
+
+}
 export class Users {
   Users!: User[]
 }

@@ -122,6 +122,15 @@ func DeleteUserHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, users.DeleteUser(Id))
 }
 
+func ValidateUserHandler(c *gin.Context) {
+	User, statusCode, err := convertHTTPBodyUser(c.Request.Body)
+	if err != nil {
+		c.JSON(statusCode, err)
+		return
+	}
+	c.JSON(http.StatusOK, users.Validate(User))
+}
+
 //////////////SYSTEM HANDLERS////////////////////
 func GetNetworkInfoHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, system.GetNetworkInfo())
@@ -214,4 +223,18 @@ func convertHTTPBodyUsers(httpBody io.ReadCloser) (users.Users, int, error) {
 		return users.Users{}, http.StatusBadRequest, err
 	}
 	return Users, http.StatusOK, nil
+}
+
+func convertHTTPBodyUser(httpBody io.ReadCloser) (users.User, int, error) {
+	body, err := ioutil.ReadAll(httpBody)
+	if err != nil {
+		return users.User{}, http.StatusInternalServerError, err
+	}
+	defer httpBody.Close()
+	var User users.User
+	err = json.Unmarshal(body, &User)
+	if err != nil {
+		return users.User{}, http.StatusBadRequest, err
+	}
+	return User, http.StatusOK, nil
 }
