@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,12 @@ import { environment } from '../environments/environment';
 export class CgEdgeUsersService {
 
   Authenticated!: boolean 
+  private authenticationSubject: BehaviorSubject<any>;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+
+    this.authenticationSubject = new BehaviorSubject<boolean>(false);
+  }
 
   getUsers() {
     return this.httpClient.get(environment.gateway + '/users/json');
@@ -28,19 +33,18 @@ export class CgEdgeUsersService {
   }
 
   login() {
-    this.Authenticated = true
+    this.authenticationSubject.next(true);
 
   }
 
   logout() {
-    this.Authenticated = false
+    this.authenticationSubject.next(false);
   }
 
   isAuthenticated() {
-    return this.Authenticated
-  }
+    return true
 }
-
+}
 
 export class Users {
   Users!: User[]
