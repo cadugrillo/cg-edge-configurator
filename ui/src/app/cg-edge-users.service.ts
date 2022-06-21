@@ -32,9 +32,10 @@ export class CgEdgeUsersService {
     return this.httpClient.post(environment.gateway + '/users/'+ Id, "");
   }
 
-  login() {
+  login(User: User): Promise<boolean> {
     this.authenticationSubject.next(true);
-
+    
+    return Promise.resolve(true);
   }
 
   logout() {
@@ -42,7 +43,7 @@ export class CgEdgeUsersService {
   }
 
   isAuthenticated() {
-    return true
+    return this.authenticationSubject.value;
 }
 }
 

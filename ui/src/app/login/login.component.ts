@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CgEdgeUsersService, User } from '../cg-edge-users.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,19 @@ import { CgEdgeUsersService, User } from '../cg-edge-users.service'
 })
 export class LoginComponent implements OnInit {
 
-  user!: User
+  User: User = new User();
 
-  constructor(private CgEdgeUsersService: CgEdgeUsersService) { }
+  constructor(private CgEdgeUsersService: CgEdgeUsersService,
+              private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
-  login() {
-    this.CgEdgeUsersService.login()
+  login(User: User) {
+    this.CgEdgeUsersService.login(User).then(() => {
+      this.router.navigate(['/Dashboard']);
+    });
+    
   }
 }

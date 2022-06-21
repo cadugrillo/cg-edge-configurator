@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CgEdgeUsersService, User } from './cg-edge-users.service'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,17 +11,23 @@ import { CgEdgeUsersService, User } from './cg-edge-users.service'
 export class AppComponent {
   title = 'CG-EDGE-CONF';
 
-  authenticated!: boolean
+  
 
-  constructor(private CgEdgeUsersService: CgEdgeUsersService) {
+  constructor(private CgEdgeUsersService: CgEdgeUsersService,
+              private router: Router) {
     
   }
 
   public ngOnInit(): void {
-    this.authenticated = this.CgEdgeUsersService.isAuthenticated()
+    this.logout();
   }
 
   logout() {
-    this.CgEdgeUsersService.logout()
+    this.CgEdgeUsersService.logout();
+    this.router.navigate(['/Login']);
+  }
+
+  isAuthenticated() {
+    return this.CgEdgeUsersService.isAuthenticated();
   }
 }

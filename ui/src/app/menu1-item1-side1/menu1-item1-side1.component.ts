@@ -8,12 +8,15 @@ import { CgEdgeUsersService } from '../cg-edge-users.service'
 })
 export class Menu1Item1Side1Component implements OnInit {
 
-  isAuthenticated!: boolean;
 
   constructor(private CgEdgeUsersService: CgEdgeUsersService) { }
 
   ngOnInit(): void {
-    this.isAuthenticated = this.CgEdgeUsersService.isAuthenticated()
+    
+  }
+
+  isAuthenticated() {
+    return this.CgEdgeUsersService.isAuthenticated()
   }
 
 }

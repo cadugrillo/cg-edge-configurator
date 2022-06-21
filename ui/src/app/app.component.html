@@ -1,7 +1,7 @@
   <mat-toolbar color="primary">
     <span>CG-EDGE CONFIGURATOR</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" *ngIf="authenticated" (click)="logout()">Logout</button>
+    <button mat-icon-button class="example-icon" *ngIf="isAuthenticated()" (click)="logout()">Logout</button>
   </mat-toolbar>
   <menu1-item1></menu1-item1>
 
