@@ -1,7 +1,7 @@
-<mat-toolbar>
+<mat-toolbar class="app-toolbar">
   <span></span>
 </mat-toolbar>
-<mat-selection-list color="primary" *ngIf="isAuthenticated()" #options [multiple]="false">
+<mat-selection-list class="selection" color="primary" *ngIf="isAuthenticated()" #options [multiple]="false">
     <mat-list-option routerLink="Dashboard">Dashboard</mat-list-option>
     <mat-list-option [disabled]="AppsMenuDisabled()" routerLink="Apps">Apps</mat-list-option>
     <mat-list-option [disabled]="AppsRepMenuDisabled()" routerLink="App-Repository">App Repository</mat-list-option>

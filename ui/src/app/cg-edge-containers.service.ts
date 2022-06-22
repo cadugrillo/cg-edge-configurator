@@ -84,6 +84,7 @@ export class Template {
 	name!: string
 	hostname!: string
 	description!: string
+  info_url!: string
 	categories!: string[]
 	platform!: string
 	logo!: string

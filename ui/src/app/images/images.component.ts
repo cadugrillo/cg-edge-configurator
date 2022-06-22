@@ -22,7 +22,6 @@ export class ImagesComponent implements OnInit {
   getImages() {
     this.CgEdgeImagesService.getImages().subscribe((data) => {
       this.images = (data as Image[]);
-      console.log(this.images)
     });
   }
 

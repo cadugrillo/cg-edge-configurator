@@ -17,6 +17,7 @@ type Template struct {
 	Name           string   `json:"name"`
 	Hostname       string   `json:"hostname"`
 	Description    string   `json:"description"`
+	Info_url       string   `json:"info_url"`
 	Categories     []string `json:"categories"`
 	Platform       string   `json:"platform"`
 	Logo           string   `json:"logo"`

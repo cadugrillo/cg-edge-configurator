@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  gateway: "http://" + window.location.hostname,
+  gateway: 'http://' + window.location.hostname,
 };

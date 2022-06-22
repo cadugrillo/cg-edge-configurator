@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CgEdgeContainersService, Container } from '../cg-edge-containers.service';
+import { Router } from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent } from '../message-popup/message-popup.component';
 import { WaitPopupComponent } from '../wait-popup/wait-popup.component';
@@ -15,7 +16,7 @@ export class AppsComponent implements OnInit {
   containers!: Container[]
 
   constructor(private CgEdgeContainerService: CgEdgeContainersService,
-                      public dialog: MatDialog) { }
+              public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.getContainers();
@@ -61,6 +62,21 @@ export class AppsComponent implements OnInit {
       this.dialog.closeAll();
       return saveAs(new Blob([data as string], { type: 'TXT' }), 'logs.txt');
     });
+  }
+
+  OpenConfig(Container: Container) {
+    switch (Container.Names[0]) {
+      case "/mqtt-cloud-connector":
+        this.router.navigate(['/mqtt-cloud-connector']);
+        break;
+      case "/opcua-mqtt-connector":
+        this.router.navigate(['/opcua-mqtt-connector']);
+        break;
+      default:
+        window.open('http://' + window.location.hostname + ':' + Container.Ports[1].PublicPort,'_blank');
+        console.log(Container.Names[0]);
+        break;
+    }
   }
 
 }

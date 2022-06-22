@@ -33,4 +33,8 @@ export class AppRepositoryComponent implements OnInit {
       this.dialog.open(MessagePopupComponent, {data: {title: "App Installation", text: data}});
     });
   }
+
+  getInfo(info_url: string) {
+    window.open(info_url,'_blank')
+  }
 }

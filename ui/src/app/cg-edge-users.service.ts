@@ -41,11 +41,9 @@ export class CgEdgeUsersService {
     this.validateUser(User).subscribe((data) => {
         this.CurrentUser = data as User;
         if (this.CurrentUser.Username == "invalid" || this.CurrentUser.Username == "") {
-          console.log("invalid or empty");
           this.authenticationSubject.next(false);
           subject.next(this.authenticationSubject.value);
         } else {
-          console.log("valid");
           this.authenticationSubject.next(true);
           subject.next(this.authenticationSubject.value);
         }  
