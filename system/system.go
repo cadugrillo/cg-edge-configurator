@@ -1,6 +1,8 @@
 package system
 
 import (
+	"encoding/json"
+	"io/ioutil"
 	"net"
 	"net/http"
 
@@ -24,6 +26,22 @@ type Adapter struct {
 	Netmask    string `json:"Netmask"`
 	Network    string `json:"Network"`
 }
+
+type HostStats struct {
+	CpuUsage      []float64 `json:"CpuUsage"`
+	RamTotal      float64   `json:"RamTotal"`
+	RamUsed       float64   `json:"RamUsed"`
+	RamUsedPct    float64   `json:"RamUsedPct"`
+	RamAvailable  float64   `json:"RamAvailable"`
+	RamFree       float64   `json:"RamFree"`
+	DiskUsage     float64   `json:"DiskUsage"`
+	DiskAvailable float64   `json:"DiskAvailable"`
+	DiskTotal     float64   `json:"DiskTotal"`
+}
+
+var (
+	hostStats HostStats
+)
 
 func GetNetworkInfo() *ni.InterfaceSet {
 	is := ni.Parse(ni.Path("/etc/network/interfaces"))
@@ -82,4 +100,29 @@ func ShutDownHost() string {
 		return err.Error()
 	}
 	return ""
+}
+
+func GetHostStats() HostStats {
+
+	url := "http://host.docker.internal:4383/host/stats"
+	//url := "http://localhost:4383/host/stats"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	res, err := http.DefaultClient.Do(req)
+	if err != nil {
+		println(err.Error())
+		return hostStats
+	}
+	defer res.Body.Close()
+
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		println(err.Error())
+		return hostStats
+	}
+
+	json.Unmarshal(body, &hostStats)
+	return hostStats
+
 }

@@ -164,6 +164,10 @@ func ShutDownHostHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, system.ShutDownHost())
 }
 
+func GetHostStatsHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, system.GetHostStats())
+}
+
 ///////////////CONVERSIONs OF HTTP BODY TO SPECIFIC STRUCTURES////////////////////////////
 
 func convertHTTPBodyMccConfig(httpBody io.ReadCloser) (mqttcloudconfig.Config, int, error) {

@@ -17,7 +17,7 @@ export class SystemComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getDockerServerInfo()
+    this.getDockerServerInfo();
   }
 
   getDockerServerInfo() {

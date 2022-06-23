@@ -4,3 +4,53 @@
     top: 64px; /* Sets the sticky toolbar to be on top */
     z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
   }
+
+  .system {
+    padding: 30px;
+    display: inline-grid;
+    grid-template-columns: 430px 430px;
+  }
+  
+  .example-card {
+    width: 400px;
+    max-height: 600px;
+    margin-bottom: 80px;
+    background-color: rgb(245, 245, 248);
+  }
+
+  .warning {
+    padding: 30px;
+    display: inline-grid;
+    grid-template-columns: 860px;
+  }
+  
+  .warning-card {
+    width: 800px;
+    max-height: 50px;
+    margin-bottom: 5px;
+    background-color: rgb(247, 229, 221);
+  }
+
+  section {
+    display: table;
+    margin-left: 30px;
+  }
+
+  .example-button-row {
+    display: table-cell;
+    width: 860px;
+    padding: 30px;
+  }
+
+  .example-button-row .mat-button-base {
+    margin: 20px 20px;
+  }
+
+  .topline {
+    display: inline-grid;
+    grid-template-columns: 200px 200px;
+  }
+
+  .CPU {
+    padding: 20px
+  }

@@ -31,6 +31,7 @@ func main() {
 	r.POST("/users/:Id", handlers.DeleteUserHandler)
 	r.POST("/users/validate", handlers.ValidateUserHandler)
 	r.GET("/system/hostnetwork", handlers.GetNetworkInfoHandler)
+	r.GET("/system/hoststats", handlers.GetHostStatsHandler)
 	r.POST("/system/hostnetwork", handlers.SetNetworkInfoHandler)
 	r.POST("/system/restart", handlers.RestartHostHandler)
 	r.POST("/system/shutdown", handlers.ShutDownHostHandler)

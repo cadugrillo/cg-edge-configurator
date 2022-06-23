@@ -25,6 +25,10 @@ export class CgEdgeSystemService {
     return this.httpClient.post(environment.gateway + '/system/shutdown', '');
   }
 
+  getHostStats() {
+    return this.httpClient.get(environment.gateway + '/system/hoststats');
+  }
+
 }
 
 export class InterfaceSet {
@@ -43,4 +47,16 @@ class Adapter {
   Name!: string
   Netmask!: string
   Network!: string
+}
+
+export class HostStats {
+  CpuUsage!: number[]
+  RamTotal!: number
+  RamUsed!: number
+  RamUsedPct!: number
+  RamAvailable!: number
+  RamFree!: number
+  DiskUsage!: number
+  DiskAvailable!: number
+  DiskTotal!: number
 }

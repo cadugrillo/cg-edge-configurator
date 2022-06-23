@@ -1,3 +1,20 @@
 <mat-toolbar class="app-toolbar">
     <span>Dashboard</span>
 </mat-toolbar>
+<div class="system">
+    <mat-card class="example-card">
+        <mat-card-title-group>
+          <mat-card-title>CPU Usage</mat-card-title>
+          <mat-card-subtitle>Info related to CPU Usage.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <div class="topline">
+                <div class="CPU" *ngFor="let cpuUsage of HostStats?.CpuUsage; let i = index">
+                    <h2>CPU {{i}}: {{cpuUsage}}%</h2>
+                    <mat-spinner color="warn" mode="determinate" [value]="cpuUsage"></mat-spinner>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end"></mat-card-actions>
+    </mat-card>
+</div>    
