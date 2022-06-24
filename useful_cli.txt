@@ -14,6 +14,8 @@ export DBPORT=3306 \
 export DBUSER=root \
 export DBPASSWORD=root
 
+export GIN_MODE=release
+
 ///////DOCKER ATTACH//////////////
  docker attach --sig-proxy=false  <CONTAINER NAME>
 
