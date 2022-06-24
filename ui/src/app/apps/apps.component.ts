@@ -73,7 +73,7 @@ export class AppsComponent implements OnInit {
         this.router.navigate(['/opcua-mqtt-connector']);
         break;
       default:
-        window.open('http://' + window.location.hostname + ':' + Container.Ports[1].PublicPort,'_blank');
+        window.open('http://' + window.location.hostname + ':' + Container.Ports[0].PublicPort,'_blank');
         console.log(Container.Names[0]);
         break;
     }
