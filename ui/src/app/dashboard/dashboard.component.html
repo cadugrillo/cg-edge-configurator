@@ -2,7 +2,7 @@
     <span>Dashboard</span>
 </mat-toolbar>
 <div class="system">
-    <mat-card class="example-card">
+    <mat-card class="cpu-card">
         <mat-card-title-group>
           <mat-card-title>CPU Usage</mat-card-title>
           <mat-card-subtitle>Info related to CPU Usage.</mat-card-subtitle>
@@ -12,6 +12,52 @@
                 <div class="CPU" *ngFor="let cpuUsage of HostStats?.CpuUsage; let i = index">
                     <h2>CPU {{i}}: {{cpuUsage}}%</h2>
                     <mat-spinner color="warn" mode="determinate" [value]="cpuUsage"></mat-spinner>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end"></mat-card-actions>
+    </mat-card>
+    <mat-card class="memory-card">
+        <mat-card-title-group>
+          <mat-card-title>Memory Usage ({{HostStats.RamTotal}} Gb available)</mat-card-title>
+          <mat-card-subtitle>Info related to RAM Memory Usage.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <div class="RAMmemory">
+                <div class="RAM">
+                    <h2>Memory in use (%): {{HostStats?.RamUsedPct}} %</h2>
+                    <mat-progress-bar color="warn" mode="determinate" [value]="HostStats?.RamUsedPct"></mat-progress-bar>
+                </div>
+                <div class="RAM">
+                    <h2>Memory in use: {{HostStats?.RamUsed}} Gb</h2>
+                    <mat-progress-bar color="warn" mode="determinate" [value]="RamUsedBar"></mat-progress-bar>
+                </div>
+                <div class="RAM">
+                    <h2>Memory available: {{HostStats?.RamAvailable}} Gb</h2>
+                    <mat-progress-bar color="warn" mode="determinate" [value]="RamAvailableBar"></mat-progress-bar>
+                </div>
+                <div class="RAM">
+                    <h2>Memory free: {{HostStats?.RamFree}} Gb</h2>
+                    <mat-progress-bar color="warn" mode="determinate" [value]="RamFreeBar"></mat-progress-bar>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end"></mat-card-actions>
+    </mat-card>
+    <mat-card class="disk-card">
+        <mat-card-title-group>
+          <mat-card-title>Disk Usage ({{HostStats.DiskTotal}} Gb available)</mat-card-title>
+          <mat-card-subtitle>Info related to Disk Usage.</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+            <div class="RAMmemory">
+                <div class="RAM">
+                    <h2>Disk in use (%): {{HostStats?.DiskUsage}} %</h2>
+                    <mat-progress-bar color="warn" mode="determinate" [value]="HostStats?.DiskUsage"></mat-progress-bar>
+                </div>
+                <div class="RAM">
+                    <h2>Disk available: {{HostStats?.DiskAvailable}} Gb</h2>
+                    <mat-progress-bar color="warn" mode="determinate" [value]="DiskAvailable"></mat-progress-bar>
                 </div>
             </div>
         </mat-card-content>

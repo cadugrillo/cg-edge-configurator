@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CgEdgeSystemService, HostStats } from '../cg-edge-system.service';
 import { Subscription, timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   subscription !: Subscription;
   HostStats: HostStats = new HostStats();
+  RamUsedBar!: number
+  RamAvailableBar!: number
+  RamFreeBar!: number
+  DiskAvailable!: number
 
   constructor(private CgEdgeSystemService: CgEdgeSystemService) { }
 
@@ -25,6 +30,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   getHostStats() {
     this.CgEdgeSystemService.getHostStats().subscribe((data) => {
       this.HostStats = (data as HostStats);
+      this.RamUsedBar = (this.HostStats.RamUsed/this.HostStats.RamTotal) * 100;
+      this.RamAvailableBar = (this.HostStats.RamAvailable/this.HostStats.RamTotal) * 100;
+      this.RamFreeBar = (this.HostStats.RamFree/this.HostStats.RamTotal) * 100;
+      this.DiskAvailable = (this.HostStats.DiskAvailable/this.HostStats.DiskTotal) * 100;
     });
   }
 

@@ -29,6 +29,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRepositoryComponent } from './app-repository/app-repository.component';
 import { UsersComponent } from './users/users.component';
@@ -86,7 +87,8 @@ import { CgEdgeImagesService } from './cg-edge-images.service';
     MatCardModule,
     MatMenuModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, CgEdgeUsersService,CgEdgeImagesService,{
     provide: HTTP_INTERCEPTORS,
