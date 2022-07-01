@@ -26,7 +26,7 @@ func main() {
 	r.GET("/config/:appName", handlers.GetConfigHandler)
 	r.POST("/config/:appName", handlers.SetConfigHandler)
 	r.GET("/users/json", handlers.GetUsersHandler)
-	r.POST("/users/json", handlers.UpdateUsersHandler)
+	r.POST("/users/json", handlers.UpdateUserHandler)
 	r.GET("/users/add", handlers.AddUserHandler)
 	r.POST("/users/:Id", handlers.DeleteUserHandler)
 	r.POST("/users/validate", handlers.ValidateUserHandler)

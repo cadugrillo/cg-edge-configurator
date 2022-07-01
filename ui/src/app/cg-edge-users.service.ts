@@ -20,8 +20,8 @@ export class CgEdgeUsersService {
     return this.httpClient.get(environment.gateway + '/users/json');
   }
 
-  updateUsers(Users: Users) {
-    return this.httpClient.post(environment.gateway + '/users/json', Users);
+  updateUser(User: User) {
+    return this.httpClient.post(environment.gateway + '/users/json', User);
   }
 
   addUser() {

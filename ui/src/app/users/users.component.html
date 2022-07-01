@@ -5,7 +5,7 @@
     <div class="example-button-row">
       <button mat-raised-button color="primary" (click)="addUser()">Add New User</button>
       <button mat-raised-button color="primary" (click)="getUsers()">Read Configuration</button>
-      <button mat-raised-button color="primary" (click)="updateUsers()">Write Configuration</button>
+      <!-- <button mat-raised-button color="primary" (click)="updateUsers()">Write Configuration</button> -->
     </div>
 </section>
 <div class="Users">
@@ -39,6 +39,7 @@
             </div>
         </mat-card-content>
         <mat-card-actions align="end">
+            <button mat-button [disabled]="(user.ID == 'master')" (click)="updateUser(user)">Update User</button>
             <button mat-button [disabled]="(user.ID == 'master')" (click)="deleteUser(user.ID)">Delete User</button>
         </mat-card-actions>
     </mat-card>

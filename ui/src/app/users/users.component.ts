@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CgEdgeUsersService, Users } from '../cg-edge-users.service';
+import { CgEdgeUsersService, Users, User } from '../cg-edge-users.service';
 import {MatDialog} from '@angular/material/dialog';
 import { MessagePopupComponent } from '../message-popup/message-popup.component';
 
@@ -25,8 +25,8 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  updateUsers() {
-    this.CgEdgeUsersService.updateUsers(this.Users).subscribe((data) => {
+  updateUser(User: User) {
+    this.CgEdgeUsersService.updateUser(User).subscribe((data) => {
       this.dialog.open(MessagePopupComponent, {data: {title: "Update Users", text: data}});
       this.getUsers();
     });

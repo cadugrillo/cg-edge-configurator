@@ -115,13 +115,13 @@ func GetUsersHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, users.GetUsers())
 }
 
-func UpdateUsersHandler(c *gin.Context) {
-	Users, statusCode, err := convertHTTPBodyUsers(c.Request.Body)
+func UpdateUserHandler(c *gin.Context) {
+	User, statusCode, err := convertHTTPBodyUser(c.Request.Body)
 	if err != nil {
 		c.JSON(statusCode, err)
 		return
 	}
-	c.JSON(http.StatusOK, users.UpdateUsers(Users))
+	c.JSON(http.StatusOK, users.UpdateUser(User))
 }
 
 func AddUserHandler(c *gin.Context) {
