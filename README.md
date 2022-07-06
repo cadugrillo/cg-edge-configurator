@@ -2,9 +2,29 @@
   <img title="cg-edge-configurator" src='https://raw.githubusercontent.com/cadugrillo/cg-edge-resources/main/cg-edge-banner.png' />
 </p>
 
-<h1>What is Golang-Angular-App1?</h1>
+CG-EDGE-CONFIGURATOR is a simple container managament UI service focused on deploy and maintain Docker containers running in an IOT device based on Debian Linux OS.
+The application allows you to manage resources (containers, images, iamge repository, users, etc.) through a simple GUI.
+It contains 7 menu options:
 
-This Web App is part of a series of small projects being created during my quest to learn new skills in the modern software development world. It is written mostly using:
+**DASHBOARD - Contains info about the hardware usage.**
+<p align="center">
+  <img title="cg-edge-configurator" src='https://raw.githubusercontent.com/cadugrillo/cg-edge-resources/main/cg-edge-dashboard.png' />
+</p>
+
+APPS - Contains a list of all running containers and options to manage each one of them.
+
+APP REPOSITORY - Contains a list of all available containers that can be installed (the list can be managed using a template JSON file that is lsited at the Settings menu) and options to manage each one of them.
+
+IMAGES - Contains a list of all available images and options to manage each one of them.
+
+SETTINGS - Contains all areas that can be configured (Network Settings, App Repository Settings).
+
+USERS - Contains a list of all system users and its access permission.
+
+SYSTEM - Contains info about the Host System, Containers Engine, Warnings and options for rebbot and shutdown the host system.
+
+
+This App is part of a series of small projects being created during my quest to learn new skills in the modern software development world. It is written mostly using:
 
 - Golang (or Go) programming language. You can find more info at https://go.dev/.
 - Angular framework. You can find more info at https://angular.io/.
@@ -21,14 +41,13 @@ This Web App is part of a series of small projects being created during my quest
 
 <h3>You can access a running version of the app at:</h3>
 
-**http://app1.cadugrillo.com**
+**http://cg-edge-aws-01.cadugrillo.com/**
 
 
 <h1>Where can I find the source code?</h1>
 
 You can fork this git repository.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/cadugrillo/golang-angular-App1.git)
 
 <h1>How to deploy ?</h1>
 
@@ -36,13 +55,5 @@ The easiest way to deploy is using docker-compose.yml file found in this git rep
 
 1. Copy the file to your desired folder
 2.  From the root of the folder run in a terminal "docker-compose up -d"
-3. From your local browser navigate to http://localhost:80.
+3. From your local browser navigate to http://localhost.
 
-<h1>Description of the HTTP API endpoint</h1>
-
-The service listens to port 4300 and handles all methods (**GET**, **POST**, **PUT**, and **DELETE**) available at the API endpoint (**/todo**). 
-
-**GET -** returns a list with all tasks.  
-**POST -** adds a new task to the list and returns all tasks.  
-**DELETE -** deletes a task based on its id.  
-**PUT -** sets the task flag "complete" and returns all tasks.
