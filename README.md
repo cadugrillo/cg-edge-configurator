@@ -3,7 +3,7 @@
 </p>
 
 CG-EDGE-CONFIGURATOR is a simple container managament UI service focused on deploy and maintain Docker containers running in an IOT device based on Debian Linux OS.
-The application allows you to manage resources (containers, images, iamge repository, users, etc.) through a simple GUI.
+The application allows you to manage resources (containers, images, iamge repository, users, etc.) through a simple GUI.  
 It contains 7 menu options:
 
 **DASHBOARD - Contains info about the hardware usage.**
