@@ -51,16 +51,19 @@ This App is part of a series of small projects being created during my quest to 
 
 <h3>This app works in frontend / backend architecture where:</h3>
 
-**golang-app1 container**   - contains an HTTP API endpoint written in Go using Gin framework acting as backend of a Todo List.
-(the backend app can be found at https://hub.docker.com/repository/docker/cadugrillo/golang-app1).  
+**cg-edge-conf-api**   - contains an HTTP API endpoint written in Go using Gin framework acting as backend that conects with the Docker Engine Unix socket.
+(the backend app can be found at https://hub.docker.com/r/cadugrillo/cg-edge-conf-api).  
 
-**angular-app1 container** - contains the webpage based on Angular framework acting as the frontend of a Todo List.  
-(the frontend app can be found at https://hub.docker.com/repository/docker/cadugrillo/angular-app1).
+**cg-edge-conf** - contains the webpage based on Angular framework acting as the frontend.  
+(the frontend app can be found at https://hub.docker.com/r/cadugrillo/cg-edge-conf).
 
 
 <h3>You can access a running version of the app at:</h3>
 
 **http://cg-edge-aws-01.cadugrillo.com/**
+
+username: cguser  
+password: cguse01  
 
 
 <h1>Where can I find the source code?</h1>
