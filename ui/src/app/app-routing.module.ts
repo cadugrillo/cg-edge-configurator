@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppLauncherComponent } from './app-launcher/app-launcher.component';
 import { AppRepositoryComponent } from './app-repository/app-repository.component';
 import { AppsComponent } from './apps/apps.component';
 import { AuthGuardService } from './auth-guard.service';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuardService]},
   { path: 'Apps', component: AppsComponent, canActivate: [AuthGuardService]},
   { path: 'App-Repository', component: AppRepositoryComponent, canActivate: [AuthGuardService]},
+  { path: 'App-Launcher', component: AppLauncherComponent, canActivate: [AuthGuardService]},
   { path: 'Images', component: ImagesComponent, canActivate: [AuthGuardService]},
   { path: 'Users', component: UsersComponent, canActivate: [AuthGuardService]},
   { path: 'System', component: SystemComponent, canActivate: [AuthGuardService]},

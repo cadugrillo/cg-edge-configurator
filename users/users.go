@@ -50,7 +50,8 @@ func init() {
 }
 
 func initialiseDBconn() {
-	db, err = sql.Open("mysql", "root:cgEdgeRoot@tcp(mysql:3306)/cgEdge")
+	//db, err = sql.Open("mysql", "root:cgEdgeRoot@tcp(mysql:3306)/cgEdge")
+	db, err = sql.Open("mysql", "root:cgEdgeRoot@tcp(localhost:3306)/cgEdge")
 	if err != nil {
 		log.Println("Opening:", err.Error())
 		return

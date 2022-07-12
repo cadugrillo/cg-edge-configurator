@@ -1,0 +1,75 @@
+.app-toolbar {
+    position: sticky;
+    position: -webkit-sticky; /* For macOS/iOS Safari */
+    top: 64px; /* Sets the sticky toolbar to be on top */
+    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+  }
+  
+  .Launcher {
+      padding: 30px;
+    }
+  
+    .example-card {
+      max-width: 1150px;
+      max-height: 1200px;
+      margin-bottom: 50px;
+      background-color: rgb(245, 245, 248);
+    }
+  
+    .example-full-width {
+      width: 90%;
+    }
+  
+    section {
+      display: table;
+      margin-left: 30px;
+    }
+
+    .inner-section {
+        display: table;
+    
+    }
+  
+    .example-button-row {
+      display: table-cell;
+      width: 700px;
+    }
+    
+    .example-button-row .mat-button-base {
+      margin: 8px 8px;
+    }
+  
+    .topline {
+      display: inline-grid;
+      grid-template-columns: 350px 350px 350px;
+    }
+
+    .secondline {
+        display: inline-grid;
+        grid-template-columns: 350px 350px 350px;
+      }
+
+    .thirdline {
+        display: inline-grid;
+        grid-template-columns: 210px 210px 210px 210px 210px;
+    }
+    
+    .fourthline {
+        display: inline-grid;
+        grid-template-columns: 350px 350px 350px;
+    }
+    
+    .fifthline {
+        display: inline-grid;
+        grid-template-columns: 525px 525px;
+    } 
+  
+    .bottomline {
+      display: table-cell;
+      width: 800px;
+      margin: 20px 20px 20px 20px 20px 20px 20px;
+    }
+  
+    .example-margin {
+      margin-left: 20px;
+    }

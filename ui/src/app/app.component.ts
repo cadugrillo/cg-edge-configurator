@@ -30,5 +30,9 @@ export class AppComponent {
   isAuthenticated() {
     return this.CgEdgeUsersService.isAuthenticated();
   }
+
+  openWebPage() {
+    window.open('https://github.com/cadugrillo/cg-edge-configurator', '_blank');
+  }
 }
 

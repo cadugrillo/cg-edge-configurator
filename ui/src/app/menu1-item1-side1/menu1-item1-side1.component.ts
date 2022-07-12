@@ -28,6 +28,10 @@ export class Menu1Item1Side1Component implements OnInit {
     return !this.CgEdgeUsersService.CurrentUser.Permissions.AppsRepository
   }
 
+  AppLaunchMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.AppsRepository
+  }
+
   ImagesMenuDisabled() {
     return !this.CgEdgeUsersService.CurrentUser.Permissions.Images
   }

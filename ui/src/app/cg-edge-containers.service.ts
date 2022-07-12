@@ -91,6 +91,7 @@ export class Template {
 	image!: string
 	restart_policy!: string
 	network!: string
+  env!: string[]
 	ports!: string[]
 	volumes!: string[]
 }

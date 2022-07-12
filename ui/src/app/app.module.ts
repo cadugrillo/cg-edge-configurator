@@ -45,6 +45,8 @@ import { LoginComponent } from './login/login.component';
 import { ImagesComponent } from './images/images.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CgEdgeImagesService } from './cg-edge-images.service';
+import { AppLauncherComponent } from './app-launcher/app-launcher.component';
+
 
 
 @NgModule({
@@ -67,6 +69,7 @@ import { CgEdgeImagesService } from './cg-edge-images.service';
     LoginComponent,
     ImagesComponent,
     ProfileComponent,
+    AppLauncherComponent,
   ],
   imports: [
     AppRoutingModule,
