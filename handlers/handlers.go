@@ -12,12 +12,15 @@ import (
 	"cg-edge-configurator/configurator"
 	"cg-edge-configurator/containers"
 	"cg-edge-configurator/images"
+	"cg-edge-configurator/networks"
 	"cg-edge-configurator/system"
 	"cg-edge-configurator/users"
+	"cg-edge-configurator/volumes"
 
 	"github.com/gin-gonic/gin"
 )
 
+/////////////CG-APPS CONFIGURATION HANDLERS////////////////////
 func GetConfigHandler(c *gin.Context) {
 	appName := c.Param("appName")
 	switch appName {
@@ -54,6 +57,7 @@ func SetConfigHandler(c *gin.Context) {
 	c.JSON(http.StatusBadRequest, "App not found")
 }
 
+/////////////CONTAINERS HANDLERS////////////////////
 func GetContainersHandler(c *gin.Context) {
 	c.JSON(http.StatusOK, containers.GetContainers())
 }
@@ -108,6 +112,31 @@ func GetImagesHandler(c *gin.Context) {
 func RemoveImageHandler(c *gin.Context) {
 	Id := c.Param("Id")
 	c.JSON(http.StatusOK, images.RemoveImage(Id))
+}
+
+/////////////VOLUMES HANDLERS////////////////////
+func GetVolumesHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, volumes.GetVolumes())
+}
+
+func RemoveVolumeHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, volumes.RemoveVolume(Id))
+}
+
+/////////////NETWORKS HANDLERS////////////////////
+func GetNetworksHandler(c *gin.Context) {
+	c.JSON(http.StatusOK, networks.GetNetworks())
+}
+
+func CreateNetworkHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, networks.CreateNetwork(Id))
+}
+
+func RemoveNetworkHandler(c *gin.Context) {
+	Id := c.Param("Id")
+	c.JSON(http.StatusOK, networks.RemoveNetwork(Id))
 }
 
 //////////////USERS HANDLERS/////////////////////

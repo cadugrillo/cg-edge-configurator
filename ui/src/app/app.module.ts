@@ -46,6 +46,8 @@ import { ImagesComponent } from './images/images.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CgEdgeImagesService } from './cg-edge-images.service';
 import { AppLauncherComponent } from './app-launcher/app-launcher.component';
+import { CgEdgeVolumesService } from './cg-edge-volumes.service';
+import { VolumesComponent } from './volumes/volumes.component';
 
 
 
@@ -70,6 +72,7 @@ import { AppLauncherComponent } from './app-launcher/app-launcher.component';
     ImagesComponent,
     ProfileComponent,
     AppLauncherComponent,
+    VolumesComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -93,7 +96,8 @@ import { AppLauncherComponent } from './app-launcher/app-launcher.component';
     MatProgressSpinnerModule,
     MatProgressBarModule
   ],
-  providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, CgEdgeUsersService,CgEdgeImagesService,{
+  providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, CgEdgeUsersService,CgEdgeImagesService,
+    CgEdgeVolumesService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true

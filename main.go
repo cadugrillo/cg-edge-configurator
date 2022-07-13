@@ -46,6 +46,11 @@ func main() {
 	r.POST("/containers/:Id/remove", handlers.RemoveContainerHandler)
 	r.GET("/images/json", handlers.GetImagesHandler)
 	r.POST("/images/:Id/remove", handlers.RemoveImageHandler)
+	r.GET("/volumes/json", handlers.GetVolumesHandler)
+	r.POST("/volumes/:Id/remove", handlers.RemoveVolumeHandler)
+	r.GET("/networks/json", handlers.GetNetworksHandler)
+	r.POST("/networks/:Id/create", handlers.CreateNetworkHandler)
+	r.POST("/networks/:Id/remove", handlers.RemoveNetworkHandler)
 
 	httpPort := os.Getenv("HTTP_PORT")
 	if httpPort == "" {

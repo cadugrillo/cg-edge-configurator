@@ -13,6 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
 import { SystemComponent } from './system/system.component';
 import { UsersComponent } from './users/users.component';
+import { VolumesComponent } from './volumes/volumes.component';
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'App-Repository', component: AppRepositoryComponent, canActivate: [AuthGuardService]},
   { path: 'App-Launcher', component: AppLauncherComponent, canActivate: [AuthGuardService]},
   { path: 'Images', component: ImagesComponent, canActivate: [AuthGuardService]},
+  { path: 'Volumes', component: VolumesComponent, canActivate: [AuthGuardService]},
   { path: 'Users', component: UsersComponent, canActivate: [AuthGuardService]},
   { path: 'System', component: SystemComponent, canActivate: [AuthGuardService]},
   { path: 'Settings', component: SettingsComponent, canActivate: [AuthGuardService]},
