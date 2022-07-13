@@ -15,13 +15,15 @@ COPY ./handlers/ /usr/local/go/src/cg-edge-configurator/handlers
 COPY ./system/ /usr/local/go/src/cg-edge-configurator/system
 COPY ./users/ /usr/local/go/src/cg-edge-configurator/users
 COPY ./images/ /usr/local/go/src/cg-edge-configurator/images
+COPY ./networks/ /usr/local/go/src/cg-edge-configurator/networks
+COPY ./volumes/ /usr/local/go/src/cg-edge-configurator/volumes
 COPY ./containers/ /usr/local/go/src/cg-edge-configurator/containers
 COPY ./apps-repository/ /usr/local/go/src/cg-edge-configurator/apps-repository
 COPY ./configurator/ /usr/local/go/src/cg-edge-configurator/configurator
 COPY ./apps/ /usr/local/go/src/cg-edge-configurator/apps
 RUN mkdir -p /apps
-RUN mkdir -p /users
-COPY ./users/users.json /users
+#RUN mkdir -p /users
+#COPY ./users/users.json /users
 
 RUN ls -laR ./
 
@@ -37,7 +39,7 @@ FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /cgEdgeConfApi /cgEdgeConfApi
 COPY --from=builder /apps /apps
-COPY --from=builder /users /users
+#COPY --from=builder /users /users
 
 EXPOSE 4343
 EXPOSE 4383
