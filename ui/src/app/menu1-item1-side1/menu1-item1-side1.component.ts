@@ -40,6 +40,10 @@ export class Menu1Item1Side1Component implements OnInit {
     return !this.CgEdgeUsersService.CurrentUser.Permissions.Images
   }
 
+  NetworksMenuDisabled() {
+    return !this.CgEdgeUsersService.CurrentUser.Permissions.Images
+  }
+
   SettingsMenuDisabled() {
     return !this.CgEdgeUsersService.CurrentUser.Permissions.Settings
   }

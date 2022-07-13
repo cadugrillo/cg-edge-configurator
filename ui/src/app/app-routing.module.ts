@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ImagesComponent } from './images/images.component';
 import { LoginComponent } from './login/login.component';
 import { MqttCloudConnectorComponent } from './mqtt-cloud-connector/mqtt-cloud-connector.component';
+import { NetworksComponent } from './networks/networks.component';
 import { OpcuaMqttConnectorComponent } from './opcua-mqtt-connector/opcua-mqtt-connector.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'App-Launcher', component: AppLauncherComponent, canActivate: [AuthGuardService]},
   { path: 'Images', component: ImagesComponent, canActivate: [AuthGuardService]},
   { path: 'Volumes', component: VolumesComponent, canActivate: [AuthGuardService]},
+  { path: 'Networks', component: NetworksComponent, canActivate: [AuthGuardService]},
   { path: 'Users', component: UsersComponent, canActivate: [AuthGuardService]},
   { path: 'System', component: SystemComponent, canActivate: [AuthGuardService]},
   { path: 'Settings', component: SettingsComponent, canActivate: [AuthGuardService]},

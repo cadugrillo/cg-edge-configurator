@@ -48,6 +48,8 @@ import { CgEdgeImagesService } from './cg-edge-images.service';
 import { AppLauncherComponent } from './app-launcher/app-launcher.component';
 import { CgEdgeVolumesService } from './cg-edge-volumes.service';
 import { VolumesComponent } from './volumes/volumes.component';
+import { CgEdgeNetworksService } from './cg-edge-networks.service';
+import { NetworksComponent } from './networks/networks.component';
 
 
 
@@ -73,6 +75,7 @@ import { VolumesComponent } from './volumes/volumes.component';
     ProfileComponent,
     AppLauncherComponent,
     VolumesComponent,
+    NetworksComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -97,7 +100,7 @@ import { VolumesComponent } from './volumes/volumes.component';
     MatProgressBarModule
   ],
   providers: [CgEdgeConfigService, CgEdgeContainersService, CgEdgeSystemService, CgEdgeUsersService,CgEdgeImagesService,
-    CgEdgeVolumesService,{
+    CgEdgeVolumesService,CgEdgeNetworksService,{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptor,
     multi: true
